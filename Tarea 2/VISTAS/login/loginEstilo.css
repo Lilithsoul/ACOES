@@ -1,0 +1,172 @@
+body{
+  font: 15px Courier, sans-serif;
+  font:tahoma;
+  background-color: #DFECAB;
+  text-align: center;
+}
+
+img{
+  position: relative;
+}
+
+.exteriorFormulario{
+    background-color:white;
+    margin-left: 38%;
+    margin-right: 38%;
+    opacity: 0.8;
+    outline-style: outset;
+    outline-color: lightblue;
+    outline-width: 10px;
+}
+.formulario{
+  opacity: 1;
+  text-align: center; /Si prefieres el texto a la izquierda... /
+  display: inline-block;
+  justify-content: center;
+  top:50%;
+  left:50%;
+  padding-bottom: 10px;
+
+}
+.boton {
+  text-decoration: none;
+  font: 20px arial, sans-serif;
+  border-radius: 8px;
+  background-color: #gray;
+  padding: 14px 20px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.boton:hover {
+  background-color: #c2bcbc; 
+  color: white;
+}
+
+
+input[type=text]{
+  padding: 7px 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+input[type=password]{
+  padding: 7px 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+input[type=tel]{
+  padding: 7px 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+input[type=date]{
+  padding: 7px 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+input[type=email]{
+  padding: 7px 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+input[type=text] {
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  background-color: lightblue;
+  border: 3px solid #555;
+  width: 60%;
+}
+
+input[type=password] {
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+
+}
+
+input[type=password]:focus {
+  background-color: lightblue;
+  border: 3px solid #555;
+  width: 60%;
+}
+
+input[type=tel] {
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+
+}
+
+input[type=tel]:focus {
+  background-color: lightblue;
+  border: 3px solid #555;
+  width: 60%;
+}
+
+input[type=email] {
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=email]:focus {
+  background-color: lightblue;
+  border: 3px solid #555;
+  width: 60%;
+}
+
+ul{
+
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+ul {
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  font: 15px arial, sans-serif;
+
+
+}
+
+li form{
+	  display: block;
+	  padding: 15px;
+	  font-weight: 30px;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none; /*Para que no salga la linea fea de abajo*/
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+h2{
+  padding-top: 20px;
+  color:#black;
+  font: 30px Monserrat, sans-serif;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+
+
+}
+
+
+h5{
+  color: black;
+  text-align: bottom;
+
+}
+
