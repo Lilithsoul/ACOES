@@ -1,0 +1,86 @@
+img {
+    width:100%;
+    max-width:2000px;
+    position:absolute;
+    z-index:0;
+}
+
+.menu{
+	font-weight: 15px;
+}
+
+/* Menú adaptable a la página. siempre se mostrará arriba del todo :D*/
+ul{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+input[type=button], input[type=submit]{
+  background-color: lightblue;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-decoration: none;
+  margin: 4px 5px;
+  cursor: pointer;
+}
+
+input[type=text]:focus {
+  background-color: lightblue;
+}
+
+input[type=password]:focus {
+  background-color: lightblue;
+}
+
+ul {
+
+  z-index:1;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #262626;
+}
+
+li {
+  float: left;
+  font: 15px Monserrat, sans-serif;
+
+
+}
+
+a{
+
+}
+
+li form{
+	  display: block;
+	  padding: 15px;
+	  font-weight: 30px;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;/*Para que no salga la linea fea de abajo*/
+  font:15px Monserrat, sans-serif; 
+}
+
+li a:hover {
+  background-color: #55555;
+}
+h1{
+   z-index:2;
+}
+
+h2{
+	font: 30px arial, sans-serif;
+}
+
+h3{
+	font: 18px arial, sans-serif;
+}
