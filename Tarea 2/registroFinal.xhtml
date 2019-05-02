@@ -1,10 +1,13 @@
-<html emplate="/WEB-INF/templates/plantilla.xhtml"
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
    
+    <html>
+    
+        <ui:define name="content">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -55,7 +58,7 @@
                         <tr>
                      
                             <td><h:inputText a:placeholder="USERNAME" value="#{login.usuario}" style="padding: 15px 20px;
-                            box-sizing: border-box; text-align: center; font-size: 100%px;  padding-bottom: 10px"/></td>
+                            box-sizing: border-box; text-align: center; font-size: 100%px;  padding-bottom: 10px; padding-right:10px;"/></td>
                         </tr>
                         <tr>
                             
@@ -94,7 +97,9 @@
         </footer>
 
     </h:body>
+            
+     </ui:define>
      
 </html>
 
-   
+</ui:composition>
