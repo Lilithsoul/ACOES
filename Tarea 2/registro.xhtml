@@ -1,0 +1,136 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:t="org.apache.myfaces.custom.date.HtmlInputDate">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/registroEstilo.css" rel="stylesheet" type="text/css" />
+        <h:outputStylesheet library = "css" name = "styles.css" /> 
+
+        <title>
+            <ui:insert name="title">Registro Acoes</ui:insert>
+        </title>
+        
+        <style type="text.css">
+            .content{
+                background-image: url(//Users/katiucha/Downloads/acoesweb/web);
+                
+            }
+            
+        </style>
+    </h:head>
+    
+    <ui:define name="title">Registro</ui:define>
+  
+   
+    <ui:define name="content">
+        
+        <c:choose>
+        
+            <c:when test="#{empty controlAutorizacion.usuario}">
+                <h:form id="registro">
+                  <div style="background-color:lightblue; margin-left: 38%; 
+                       margin-right: 38%; 
+                       opacity: 0.8; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 50px;">  
+                      
+                      <table style="opacity: 1;
+                         text-align: center;
+                         padding-bottom: 20px;
+                         font: 30px Monserrat, sans-serif;
+                         font-size: 30px;
+                         padding-left: 24%; " >
+                        
+                          <tr>
+                               <td style="  font: 30px Monserrat, sans-serif">Cuentanos sobre tí!</td>
+                          </tr>   
+                        <tr>
+                           
+                            <td><h:inputText a:placeholder="NOMBRE" value="#{registro.nombre}" style="padding: 7px 10px;
+                            box-sizing: border-box; text-align: center; "/>
+                        </td>
+                        </tr>
+                        <tr>
+                          
+                            <td><h:inputText a:placeholder="PRIMER APELLIDO" value="#{registro.apellido1}" style="padding: 7px 10px;
+                            box-sizing: border-box; text-align: center;"/></td>
+                        </tr>
+                        <tr>
+                          
+                            <td><h:inputText a:placeholder="SEGUNDO APELLIDO" value="#{registro.apellido2}" style="padding: 7px 10px;
+                            box-sizing: border-box; text-align: center;"/></td>
+                        </tr>
+                        <tr>
+                            
+                            <td><h:inputText a:placeholder="E-MAIL" value="#{registro.email}" style="padding: 7px 10px;
+                            box-sizing: border-box; text-align: center;"/></td>
+                        </tr>
+                        <tr>
+                           
+                            <td><h:inputText a:placeholder="TELEFONO" value="#{registro.telefono}" style="padding: 7px 10px;
+                            box-sizing: border-box; text-align: center;"/></td>
+                        </tr>
+                        <tr>
+                            
+                            <td><h:inputSecret a:placeholder="CONTRASEÑA" value="#{registro.password}" style="padding: 7px 10px;
+                            box-sizing: border-box; text-align: center;"/></td>
+                        </tr>
+                        <tr>
+                          
+                            <td><h:inputText a:placeholder="REPETIR CONTRASEÑA" value="#{registro.password}" style="padding: 7px 10px;
+                            box-sizing: border-box; text-align: center;"/></td>
+                        </tr>
+                        <tr>
+                          
+                            <td><h:inputText a:placeholder="NIF" value="#{registro.NIF}" style="padding: 7px 10px;
+                            box-sizing: border-box; text-align: center;"/></td>
+                        </tr>
+
+                        <tr>  
+
+                            <td><h:inputText a:placeholder="USERNAME" value="#{registro.user_name}" style="padding: 7px 10px;
+                            box-sizing: border-box; text-align: center;"/></td>
+                        </tr>
+                          <tr>
+                            <td><h:inputText a:placeholder="FECHA NACIMIENTO" value="#{registro.fechaNacimiento} " style="padding: 7px 10px;
+                            box-sizing: border-box; text-align: center;"/></td>
+                        </tr>
+                          <tr> <t:inputDate type="{date|time|both|short_time|full}"
+                popupCalendar="{true|false}"
+                ampm="{true|false}"/></tr>
+                        <tr>
+                            <td colspan="11">
+                                <h:commandButton value="Registrar" action="#{registro.registrar()}" style="  text-decoration: none;
+                                       font: 20px arial, sans-serif;
+                                       margin-top: 10px;
+                                         border-radius: 8px;
+                                         background-color: gray;
+                                         padding: 14px 20px;
+                                        -webkit-transition-duration: 0.4s; /* Safari */
+                                        transition-duration: 0.4s;"/>
+                            </td>
+                        </tr>
+                    </table>
+                  </div>    
+                </h:form>
+                
+            </c:when>
+            <c:otherwise>
+                <p>Debe salir de la aplicación si quiere entrar como otro usuario</p>
+            </c:otherwise>
+        </c:choose>
+        <h:messages/>
+    </ui:define>
+  
+   
+  
+</ui:composition>
+
+
+    
