@@ -1,0 +1,100 @@
+<html emplate="/WEB-INF/templates/plantilla.xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+   
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>
+            <ui:insert name="titulo">
+                Facelets Template
+            </ui:insert>
+        </title>
+    </h:head>
+    <h:body style="background-image: url(resources/imagenes/ninios.png);   position: relative; background-size: 100%">
+
+        <header id="cabecera">
+            <ui:insert name="cabecera">
+            </ui:insert>
+        </header>
+
+        <div class="cuerpo">
+            <nav id="menu">
+                <h:form>
+                    
+                </h:form>
+            </nav>
+
+            <article class="contenido">
+                <ui:insert name="contenido">
+                   <c:choose>
+            <c:when test="#{empty controlAutorizacion.usuario}">
+                <h:form id="login" >
+                    
+                    <div style="background-color:lightblue; margin-left: 38%; 
+                       margin-right: 38%; 
+                       opacity: 0.8; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 15%;">
+                        
+                    <table style="opacity: 1;
+                           
+                         text-align: center;
+                         padding-bottom: 50px;
+                         font: 30px Monserrat, sans-serif;
+                         font-size: 30px;
+                         padding-left: 30%;
+                         align-items: center">
+                        <h1 style="font: 30px Monserrat, sans-serif;padding-top: 15px; color:#black; padding-left: 27%; letter-spacing: -1px; word-spacing: -2px; "> ¡Inicio de sesión!</h1>
+
+                        <tr>
+                     
+                            <td><h:inputText a:placeholder="USERNAME" value="#{login.usuario}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; font-size: 100%px;  padding-bottom: 10px"/></td>
+                        </tr>
+                        <tr>
+                            
+                            <td><h:inputSecret a:placeholder="CONTRASEÑA" value="#{login.contrasenia}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <h:commandButton value="Autenticar" action="#{login.autenticar()}" style="text-decoration: none;
+                                       font: 20px arial, sans-serif;
+                                       margin-top: 10px;
+                                         border-radius: 8px;
+                                         background-color: gray;
+                                         padding: 14px 40px;
+                                        -webkit-transition-duration: 0.4s; /* Safari */
+                                        transition-duration: 0.4s;"/>
+                            </td>
+                        </tr>
+                    </table>
+                        <span id="proyecto" style="margin-left: 25%">*Todos los campos son obligatorios.</span>
+
+                        </div>    
+                </h:form>
+
+            </c:when>
+            <c:otherwise>
+                <p>Debe salir de la aplicación si quiere entrar como otro usuario</p>
+            </c:otherwise>
+        </c:choose>
+                  
+                </ui:insert>
+            </article>
+        </div>
+
+        <footer id="pie">
+        </footer>
+
+    </h:body>
+     
+</html>
+
+   
