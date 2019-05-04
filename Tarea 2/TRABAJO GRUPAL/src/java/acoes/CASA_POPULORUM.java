@@ -35,11 +35,23 @@ public class CASA_POPULORUM implements Serializable {
     //@Column (nullable = false)
     @OneToMany(mappedBy="cp")
     private List<JOVEN_NIÑO> jovenes;
+
+    public CASA_POPULORUM() {
+    }
+    
+    
+
+    public CASA_POPULORUM(String Nombre, String Region, int Tam_max) {
+        this.Nombre = Nombre;
+        this.Region = Region;
+        this.Tam_max = Tam_max;
+    }
+    
+    
     
     public List<JOVEN_NIÑO> getJovenes() {
         return jovenes;
     }
-    
 
     public void setJovenes(List<JOVEN_NIÑO> jovenes) {
         this.jovenes = jovenes;
