@@ -21,13 +21,12 @@
                     <li><h:commandLink action="#{controlAutorizacion.conocenos()}" value="Conócenos"/></li>
                     <li><h:commandLink action="#{controlAutorizacion.ccj()}" value="CCJ"/></li>
                     <li><h:commandLink action="#{controlAutorizacion.populorum()}" value="Populorum"/></li>
-                    <li><h:commandLink action="#{controlAutorizacion.ninios()}" value="Los niños"/></li>
+
                     <c:if test="#{empty controlAutorizacion.usuario}">
                         <c:if test="#{empty controlAutorizacion.socio}">
                             <c:if test="#{empty controlAutorizacion.admin}">
-                    
-                        <li style="float:right"><h:commandLink action="#{controlAutorizacion.registro()}" value="Registrarse"/></li>
-                        <li style="float:right"><h:commandLink action="#{controlAutorizacion.login()}" value="Login"/></li>
+                                <li style="float:right"><h:commandLink action="#{controlAutorizacion.registro()}" value="Registrarse"/></li>
+                                <li style="float:right"><h:commandLink action="#{controlAutorizacion.login()}" value="Login"/></li>                       
                             </c:if>
                         </c:if>
                     </c:if>
@@ -43,6 +42,7 @@
                             <li style="float:right"><h:commandLink action="#{controlAutorizacion.logout()}" value="Salir"/></li>
                         </c:when>
                         <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR'}">
+                            <li><h:commandLink action="#{controlAutorizacion.ninios()}" value="Los niños"/></li>
                             <li><h:commandLink action="#{controlAutorizacion.apadrinar()}" value="Apadrinar"/></li>
                             <li style="float:right"><h:commandLink action="#{controlAutorizacion.logout()}" value="Salir"/></li>
                         </c:when>
