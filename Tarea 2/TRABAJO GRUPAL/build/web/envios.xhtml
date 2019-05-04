@@ -1,0 +1,74 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:define name="title">CCJ actuales</ui:define>
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR'}">
+                <h:form id="mostrarEnvios">
+                    <h:dataTable  value="#{mostrarNinios.ninios}" var="ninio"
+                    styleClass="order-table" headerClass="order-table-header"
+                    rowClasses="order-table-odd-row,order-table-even-row">
+
+                        <h:column>
+                            <f:facet name="header"> Nombre </f:facet>
+                            #{ninio.nombre}
+                        </h:column>
+
+                        <h:column>
+                           <f:facet name="header">Apellido 1</f:facet>
+                           #{ninio.apellido1}
+                        </h:column>
+                        
+                        <h:column>
+                           <f:facet name="header">Apellido 2</f:facet>
+                           #{ninio.apellido2}
+                        </h:column>
+                        
+                        <h:column>
+                           <f:facet name="header">Fecha de Nacimiento</f:facet>
+                           #{ninio.fechaNacimiento}
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Descripcion</f:facet>
+                            <h:dataTable  value="#{ninio.envios_a_recibir}" var="envio"
+                            styleClass="order-table" headerClass="order-table-header"
+                            rowClasses="order-table-odd-row,order-table-even-row">
+                            <h:column>
+                                #{envio.descripcion}
+                            </h:column>
+                        </h:dataTable>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Estado</f:facet>
+                            <h:dataTable  value="#{ninio.envios_a_recibir}" var="envio"
+                            styleClass="order-table" headerClass="order-table-header"
+                            rowClasses="order-table-odd-row,order-table-even-row">
+                            <h:column>
+                                #{envio.estado}
+                            </h:column>
+                        </h:dataTable>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Socio Emisor</f:facet>
+                            <h:dataTable  value="#{ninio.envios_a_recibir}" var="envio"
+                            styleClass="order-table" headerClass="order-table-header"
+                            rowClasses="order-table-odd-row,order-table-even-row">
+                            <h:column>
+                                #{envio.socio_envio.nombre}
+                            </h:column>
+                        </h:dataTable>
+                        </h:column>
+                        
+                    </h:dataTable>
+                </h:form>
+            </c:when>
+        </c:choose>
+        <h:messages/>
+    </ui:define>
+</ui:composition>

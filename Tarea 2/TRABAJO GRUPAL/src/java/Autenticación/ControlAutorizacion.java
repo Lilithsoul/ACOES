@@ -97,6 +97,10 @@ public class ControlAutorizacion implements Serializable {
         return "login.xhtml";
     }
     
+    public String envios(){
+        return "envios.xhtml";
+    }
+    
     public String registro(){
         return "registro.xhtml";
     }
