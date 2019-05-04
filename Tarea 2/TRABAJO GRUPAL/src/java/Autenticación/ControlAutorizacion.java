@@ -16,7 +16,6 @@ import javax.faces.context.FacesContext;
  *
  * @author francis
  */
-
 @Named(value = "controlAutorizacion")
 @SessionScoped
 public class ControlAutorizacion implements Serializable {
@@ -58,15 +57,15 @@ public class ControlAutorizacion implements Serializable {
         
         String clase = "";
         
-        if(admin instanceof acoes.ADMINISTRADOR){
+        if(admin != null){
         
             clase = "ADMINISTRADOR";
             
-        } else if (socio instanceof acoes.SOCIO){
+        } else if (socio != null){
             
             clase = "SOCIO";
             
-        } else if (usuario instanceof acoes.USUARIO){
+        } else if (usuario != null){
             
             clase = "USUARIO";  
         
@@ -108,22 +107,20 @@ public class ControlAutorizacion implements Serializable {
 
     public String home() {
         
-        if(admin instanceof acoes.ADMINISTRADOR){
+        if(admin != null){
             
             return "admin.xhtml";
             
-        } else if(socio instanceof acoes.SOCIO){
+        } else if(socio != null){
             
             return "socio.xhtml";
             
-        } else if(usuario instanceof acoes.USUARIO){
+        } else if(usuario != null){
             
             return "normal.xhtml";
             
-        } else {
-            
-            return "Home.xhtml";
-        }
+        } 
+        return null;
         
     }
     

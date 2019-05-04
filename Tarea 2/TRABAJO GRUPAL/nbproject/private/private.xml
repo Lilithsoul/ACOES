@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ignac/OneDrive/Escritorio/ETSI%20INFORMÁTICA/3º%20Marzo%20-%20Junio/Sistemas%20de%20Información%20para%20Internet/TRABAJO%20GRUPAL/src/java/acoes/CCJ.java</file>
-            <file>file:/C:/Users/ignac/OneDrive/Escritorio/ETSI%20INFORMÁTICA/3º%20Marzo%20-%20Junio/Sistemas%20de%20Información%20para%20Internet/TRABAJO%20GRUPAL/web/CCJ.xhtml</file>
-            <file>file:/C:/Users/ignac/OneDrive/Escritorio/ETSI%20INFORMÁTICA/3º%20Marzo%20-%20Junio/Sistemas%20de%20Información%20para%20Internet/TRABAJO%20GRUPAL/src/java/Autenticación/ControlAutorizacion.java</file>
-            <file>file:/C:/Users/ignac/OneDrive/Escritorio/ETSI%20INFORMÁTICA/3º%20Marzo%20-%20Junio/Sistemas%20de%20Información%20para%20Internet/TRABAJO%20GRUPAL/web/login.xhtml</file>
-            <file>file:/C:/Users/ignac/OneDrive/Escritorio/ETSI%20INFORMÁTICA/3º%20Marzo%20-%20Junio/Sistemas%20de%20Información%20para%20Internet/TRABAJO%20GRUPAL/src/java/Autenticación/Login.java</file>
-            <file>file:/C:/Users/ignac/OneDrive/Escritorio/ETSI%20INFORMÁTICA/3º%20Marzo%20-%20Junio/Sistemas%20de%20Información%20para%20Internet/TRABAJO%20GRUPAL/web/WEB-INF/templates/plantilla.xhtml</file>
+            <file>file:/C:/Users/Andres/Desktop/ACOES/TRABAJO%20GRUPAL/web/Home.xhtml</file>
+            <file>file:/C:/Users/Andres/Desktop/ACOES/TRABAJO%20GRUPAL/src/java/Autenticación/ControlAutorizacion.java</file>
+            <file>file:/C:/Users/Andres/Desktop/ACOES/TRABAJO%20GRUPAL/src/java/Autenticación/mostrarNinios.java</file>
+            <file>file:/C:/Users/Andres/Desktop/ACOES/TRABAJO%20GRUPAL/src/java/acoes/CCJ.java</file>
+            <file>file:/C:/Users/Andres/Desktop/ACOES/TRABAJO%20GRUPAL/web/WEB-INF/templates/plantilla.xhtml</file>
+            <file>file:/C:/Users/Andres/Desktop/ACOES/TRABAJO%20GRUPAL/src/java/Autenticación/Login.java</file>
+            <file>file:/C:/Users/Andres/Desktop/ACOES/TRABAJO%20GRUPAL/web/ninios.xhtml</file>
         </group>
     </open-files>
 </project-private>
