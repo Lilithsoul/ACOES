@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/homeEstilo.css" rel="stylesheet" type="text/css" />
+        <title>
+            <ui:insert name="title">Facelets Template</ui:insert>
+        </title>
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            <h:form id="menu">
+                <ul class="menulist">
+
+                    <li><h:commandLink action="#{controlAutorizacion.home()}" value="Inicio"/></li>
+                    <li><h:commandLink action="#{controlAutorizacion.conocenos()}" value="Conócenos"/></li>
+                    <li><h:commandLink action="#{controlAutorizacion.ccj()}" value="CCJ"/></li>
+                    <li><h:commandLink action="#{controlAutorizacion.populorum()}" value="Populorum"/></li>
+                    <li><h:commandLink action="#{controlAutorizacion.ninios()}" value="Los niños"/></li>
+                    <c:if test="#{empty controlAutorizacion.usuario}">
+                        <c:if test="#{empty controlAutorizacion.socio}">
+                            <c:if test="#{empty controlAutorizacion.admin}">
+                    
+                        <li style="float:right"><h:commandLink action="#{controlAutorizacion.registro()}" value="Registrarse"/></li>
+                        <li style="float:right"><h:commandLink action="#{controlAutorizacion.login()}" value="Login"/></li>
+                            </c:if>
+                        </c:if>
+                    </c:if>
+                    <c:if test="#{!empty controlAutorizacion.usuario || !empty controlAutorizacion.socio || !empty controlAutorizacion.admin}">
+                    <c:choose>
+                        <c:when test="#{controlAutorizacion.getClase() == 'USUARIO'}">
+                            <li><h:commandLink action="#{controlAutorizacion.apadrinar()}" value="Apadrinar"/></li>
+                            <li style="float:right"><h:commandLink action="#{controlAutorizacion.logout()}" value="Salir"/></li>
+                        </c:when>
+                        <c:when test="#{controlAutorizacion.getClase() == 'SOCIO'}">
+                            <li><h:commandLink action="#{controlAutorizacion.apadrinar()}" value="Apadrinar"/></li>
+                            <li><h:commandLink action="#{controlAutorizacion.apadrinar()}" value="Mis bbs"/></li>
+                            <li style="float:right"><h:commandLink action="#{controlAutorizacion.logout()}" value="Salir"/></li>
+                        </c:when>
+                        <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR'}">
+                            <li><h:commandLink action="#{controlAutorizacion.apadrinar()}" value="Apadrinar"/></li>
+                            <li style="float:right"><h:commandLink action="#{controlAutorizacion.logout()}" value="Salir"/></li>
+                        </c:when>
+                         
+                    </c:choose>
+                    </c:if>
+                </ul>
+            </h:form>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+    </h:body>
+
+</html>
+

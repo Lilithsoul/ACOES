@@ -1,0 +1,40 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="title">Quiero ser Socio!</ui:define>
+
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{controlAutorizacion.getClase() == 'USUARIO'}">
+                <h:form id="formularioSocio">
+                    <table>
+                        <tr>
+                            <td>DNI: </td>
+                            <td><h:inputText value="#{formularioSocio.socio.NIF}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Número de Cuenta:  </td>
+                            <td><h:inputText value="#{formularioSocio.socio.num_cuenta_bancaria}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Direccion: </td>
+                            <td><h:inputText value="#{formularioSocio.socio.direccion}"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="3">
+                                <h:commandButton value="SerSocio" action="#{formularioSocio.serSocio}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </h:form>
+            </c:when>
+            <c:otherwise>
+                <p>Debe salir de la aplicación si quiere entrar como otro usuario</p>
+            </c:otherwise>
+        </c:choose>
+        <h:messages/>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,139 @@
+ <ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                 xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<html>
+   
+    <ui:define name="content">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="/resources/css/registroEstilo.css" rel="stylesheet" type="text/css" />
+        <title>
+            <ui:insert name="titulo">
+                Facelets Template
+            </ui:insert>
+        </title>
+    </h:head>
+
+    <h:body style="background-image: url(resources/imagenes/ninios.png);   position: relative; background-size: 100%">
+
+        <header id="cabecera">
+            <ui:insert name="cabecera">
+                <h1> CONÓCENOS!</h1>
+            </ui:insert>
+        </header>
+
+        <div class="cuerpo">
+            <nav id="menu">
+                <h:form>
+                    
+                </h:form>
+            </nav>
+
+            <article class="contenido">
+                <ui:insert name="contenido">
+                    <div style="background-color:lightblue; margin-left: 38%; 
+                       margin-right: 38%; 
+                       opacity: 0.8; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 50px;">  
+                    <h:form id="registro">
+                        
+                        <table style="opacity: 1;
+                         text-align: center;
+                         padding-bottom: 20px;
+                         font: 30px Monserrat, sans-serif;
+                         font-size: 30px;
+                         padding-left: 24%; " >
+                        
+                          <tr>
+                               <td style="  font: 30px Monserrat, sans-serif">Cuentanos sobre tí!</td>
+                          </tr>   
+                        <tr>
+                           
+                            <td><h:inputText a:placeholder="NOMBRE" value="#{registro.usuario.nombre}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;"/>
+                        </td>
+                        </tr>
+                        <tr>
+                          
+                            <td><h:inputText a:placeholder="PRIMER APELLIDO" value="#{registro.usuario.apellido1}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;"/></td>
+                        </tr>
+                        <tr>
+                          
+                            <td><h:inputText a:placeholder="SEGUNDO APELLIDO" value="#{registro.usuario.apellido2}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px; "/></td>
+                        </tr>
+                        <tr>
+                            
+                            <td><h:inputText a:placeholder="E-MAIL" value="#{registro.usuario.email}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; font-size: 100%px;"/></td>
+                        </tr>
+                        <tr>
+                           
+                            <td><h:inputText a:placeholder="TELEFONO" value="#{registro.usuario.telefono}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;"/></td>
+                        </tr>
+                        <tr>
+                            
+                            <td><h:inputSecret a:placeholder="CONTRASEÑA" value="#{registro.usuario.password}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;"/></td>
+                        </tr>
+                        <tr>
+                          
+                            <td><h:inputText a:placeholder="REPETIR CONTRASEÑA" value="#{registro.usuario.password}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;"/></td>
+                        </tr>
+                        <tr>
+                          
+                            <td><h:inputText a:placeholder="NIF" value="#{registro.usuario.NIF}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;"/></td>
+                        </tr>
+
+                        <tr>  
+
+                            <td><h:inputText a:placeholder="USERNAME" value="#{registro.usuario.user_name}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;"/></td>
+                        </tr>
+                          <tr>
+                            <td><h:inputText a:placeholder="FECHA NACIMIENTO" value="#{registro.usuario.fechaNacimiento}" style="padding: 15px 20px;
+                            box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;"/></td>
+                        </tr>
+                        <tr>    
+                            <td colspan="11">
+                                <h:commandButton value="Registrar" action="#{registro.registrar()}" style="  text-decoration: none;
+                                       font: 20px arial, sans-serif;
+                                       margin-top: 10px;
+                                         border-radius: 8px;
+                                         background-color: gray;
+                                         padding: 14px 20px;
+                                        -webkit-transition-duration: 0.4s; /* Safari */
+                                        transition-duration: 0.4s;"/>
+                            </td>
+                        </tr>
+                    </table>
+                        
+                        
+                    </h:form>
+                    </div>      
+                </ui:insert>
+            </article>
+        </div>
+
+        <footer id="pie">
+            <span id="proyecto">Todos los campos son obligatorios.</span>
+        </footer>
+
+    </h:body>
+        
+        </ui:define>
+     
+</html>
+</ui:composition>
+
+   
