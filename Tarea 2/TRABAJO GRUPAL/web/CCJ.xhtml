@@ -44,7 +44,23 @@
                            #{ccj.descripcion}
                         </h:column>
                         
+                        <h:column>
+                           
+                            <li><a style="background-color: red" href="eliminarCCJ.xhtml">Eliminar CCJ</a></li>
+                           
+                        </h:column>
+                        
+                        
+                        <h:column>
+                           
+                            <li><a style="background-color: orange" href="editarCCJ.xhtml">Editar CCJ</a></li>
+                           
+                        </h:column>
+                        
                     </h:dataTable>
+            
+                         <li><a style="background-color: green; margin-top: 20px" href="aniadirCCJ.xhtml">Añadir CCJ</a></li>
+                        
                 </h:form>
             </c:when>
             <c:when test="#{empty controlAutorizacion.usuario or controlAutorizacion.getClase() != 'ADMINISTRADOR'}">

@@ -7,15 +7,15 @@
     
     <ui:define name="title">Niños</ui:define>
     <ui:define name="content">
-        <div style="background-color:lightblue; margin-left: 30%; 
-                       margin-right: 30%; 
+        <div style="background-color:lightblue; margin-left: 15%; 
+                       margin-right: 15%; 
                        opacity: 0.8; 
                        outline-style: outset; 
                        outline-color: lightblue; 
                        outline-width: 10px; 
                        margin-top: 15%;">
             
-        <h:form id="mostrarNinios" style="">
+        <h:form id="mostrarNinios" style="width: 100%">
                     <h:dataTable  value="#{mostrarNinios.ninios}" var="ninios"
                     styleClass="order-table" headerClass="order-table-header"
                     rowClasses="order-table-odd-row,order-table-even-row" style="text-align: center; width: 100%; font:monserrat;">
@@ -65,9 +65,25 @@
                         </h:dataTable>
                         </h:column>
                         
+                        <h:column>
+                           
+                            <li><a style="background-color: red" href="eliminarNinio.xhtml">Eliminar niño</a></li>
+                           
+                        </h:column>
+                        
+                        
+                        <h:column>
+                           
+                            <li><a style="background-color: orange" href="editarNinio.xhtml">Editar niño</a></li>
+                           
+                        </h:column>
+                        
                     </h:dataTable>
+            
+                <li><a style="background-color: green; margin-top: 20px" href="aniadirNinio.xhtml">Añadir niño</a></li>
                 </h:form>
         </div>
         <h:messages/>
+        
     </ui:define>
 </ui:composition>
