@@ -1,0 +1,70 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="title">Añadir CCJ</ui:define>
+
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR'}">
+                <div style="background-color:lightblue; margin-left: 38%; 
+                       margin-right: 38%; 
+                       opacity: 0.8; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 15%; ">
+                <h:form id="aniadirCCJ">
+                    <table>
+                        <tr>
+                            <td>Nombre: </td>
+                            <td><h:inputText value="#{modCCJ.ccj.nombre}"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td> Nación: </td>
+                            <td><h:inputText value="#{modCCJ.ccj.nacion}"/></td>
+                        </tr>
+                        
+                         <tr>
+                            <td> Dirección: </td>
+                            <td><h:inputText value="#{modCCJ.ccj.direccion}"/></td>
+                        </tr>
+                        
+                         <tr>
+                            <td> Email: </td>
+                            <td><h:inputText value="#{modCCJ.ccj.email}"/></td>
+                        </tr>
+                        
+                         <tr>
+                            <td> Teléfono: </td>
+                            <td><h:inputText value="#{modCCJ.ccj.telefono}"/></td>
+                        </tr>
+                        
+                         <tr>
+                            <td> Descripción: </td>
+                            <td><h:inputText value="#{modCCJ.ccj.descripcion}"/></td>
+                        </tr>
+                        
+                         <tr>
+                            <td> Región: </td>
+                            <td><h:inputText value="#{modCCJ.ccj.region}"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="7">
+                                <h:commandButton value="Añadir CCJ"  action="#{ModCCJ.aniadir()}" style="background-color: green"/>
+                            </td>
+                        </tr>
+                    </table>
+                </h:form>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <p>Ha ocurrido un error inesperado</p>
+            </c:otherwise>
+        </c:choose>
+        <h:messages/>
+    </ui:define>
+</ui:composition>
