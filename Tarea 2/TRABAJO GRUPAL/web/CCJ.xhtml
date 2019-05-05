@@ -9,6 +9,13 @@
     <ui:define name="content">
         <c:choose>
             <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR'}">
+                <div style="background-color:lightblue; margin-left: 1%; 
+                       margin-right: 50%; 
+                       opacity: 0.8; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 1%;">
                 <h:form id="mostrarCCJ">
                     <h:dataTable  value="#{mostrarCCJ.ccjs}" var="ccj"
                     styleClass="order-table" headerClass="order-table-header"
@@ -62,6 +69,7 @@
                          <li><a style="background-color: green; margin-top: 20px" href="aniadirCCJ.xhtml">Añadir CCJ</a></li>
                         
                 </h:form>
+                </div>
             </c:when>
             <c:when test="#{empty controlAutorizacion.usuario or controlAutorizacion.getClase() != 'ADMINISTRADOR'}">
                 <h2 class="block-title block-title-center" style="text-align: center; font: 50px Monserrat, sans-serif; color: #b4bdfb;">¿Que es un CCJ?</h2>

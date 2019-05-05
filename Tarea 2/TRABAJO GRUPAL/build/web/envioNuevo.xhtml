@@ -8,6 +8,13 @@
     <ui:define name="content">
         <c:choose>
             <c:when test="#{controlAutorizacion.getClase() == 'SOCIO'}">
+                <div style="background-color:lightblue; margin-left: 38%; 
+                       margin-right: 38%; 
+                       opacity: 0.8; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 15%; ">
                 <h:form id="nuevoEnvio">
                     <table>
                         <tr>
@@ -20,13 +27,21 @@
                         </tr>              
                         <tr>
                             <td colspan="2">
-                                <h:commandButton value="Crear envio" action="#{envioNuevo.enviar()}"/>
+                                <h:commandButton value="Crear envio" action="#{envioNuevo.enviar()}" style="background-color: green"/>
                             </td>
                         </tr>
                     </table>
                 </h:form>
+                </div>
             </c:when>
             <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR' }">
+                <div style="background-color:lightblue; margin-left: 38%; 
+                       margin-right: 38%; 
+                       opacity: 0.8; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 15%; ">
                 <h:form id="nuevoEnvio">
                     <table>
                         <tr>
@@ -48,11 +63,12 @@
                         
                         <tr>
                             <td colspan="4">
-                                <h:commandButton value="Crear envio" action="#{envioNuevo.enviar()}"/>
+                                <h:commandButton value="Crear envio" action="#{envioNuevo.enviar()}" style="background-color:  green"/>
                             </td>
                         </tr>
                     </table>
                 </h:form>
+                </div>
             </c:when>
             <c:otherwise>
                 <p>Debe salir de la aplicación si quiere entrar como otro usuario</p>

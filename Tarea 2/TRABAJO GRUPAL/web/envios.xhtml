@@ -9,6 +9,14 @@
     <ui:define name="content">
         <c:choose>
             <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR' || controlAutorizacion.getClase() == 'SOCIO'}">
+                <div style="background-color:lightblue; 
+                        margin-left: 0.5%;
+                       margin-right: 60%; 
+                       opacity: 0.8; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 1%; ">
                 <h:form id="mostrarEnvios">
                     <h:dataTable  value="#{mostrarNinios.ninios}" var="ninio"
                     styleClass="order-table" headerClass="order-table-header"
@@ -67,6 +75,7 @@
                         
                     </h:dataTable>
                 </h:form>
+                </div>
                 <h2>Nuevo Envio</h2>
                 <p>Aquí le ofrecemos toda la información para realizar un nuevo envio
                     <h:outputText value="#{controlAutorizacion.admin.nombre}"/>
