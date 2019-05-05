@@ -124,8 +124,10 @@ public class ControlAutorizacion implements Serializable {
         }else{
             return "Home.xhtml";
         }
-        
-        
+    }
+    
+    public String becas(){
+        return "becas.xhtml";
     }
     
     public String historiales(){

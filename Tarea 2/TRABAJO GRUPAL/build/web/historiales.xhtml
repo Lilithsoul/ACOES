@@ -8,7 +8,15 @@
     <ui:define name="title">Niños</ui:define>
     <ui:define name="content">
         <c:choose>
-            <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR' || controlAutorizacion.getClase() == 'SOCIO'}">
+            <c:when test="#{controlAutorizacion.getClase() == 'SOCIO'}">
+                <div style="background-color:lightblue; 
+                        margin-left: 0.5%;
+                       margin-right: 60%; 
+                       opacity: 0.8; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 1%; ">
                 <h:form id="mostrarHistoriales">
                     <h:dataTable  value="#{mostrarHistoriales.historiales}" var="historiales"
                     styleClass="order-table" headerClass="order-table-header"
@@ -33,10 +41,13 @@
                            <f:facet name="header">Nombre del niño</f:facet>
                            #{historiales.niño_apadrinado.nombre}
                         </h:column>
-
-
+                        <h:column>
+                           <f:facet name="header">CCJ</f:facet>
+                           #{historiales.niño_apadrinado.ccj.nombre}
+                        </h:column>
                     </h:dataTable>
                 </h:form>
+                </div>
             </c:when>
         </c:choose>
         <h:messages/>
