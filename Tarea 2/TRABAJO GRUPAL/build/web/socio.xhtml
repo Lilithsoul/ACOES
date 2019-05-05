@@ -11,15 +11,13 @@
                 <h1>Usuario Socio</h1>
                 <p>¡¡Bienvenido <h:outputText value="#{controlAutorizacion.getSocio().getNombre()}"/>!!</p>
                 
-                <p> Usted tiene actualmente <h:outputText value="#{controlAutorizacion.getSocio().getApadrinados()}"/> bbs</p>
-                
+                <p> Usted tiene actualmente <h:outputText value="#{controlAutorizacion.getSocio().getApadrinados()}"/> niños</p>
                 <p>Aquí le ofrecemos toda la información para apadrinar un niño <h:outputText value="#{controlAutorizacion.getSocio().getNombre()}"/></p>
                 <p>Si quiere apadrinar un niño pulse aquí: </p>
-                
+
                 <h:form id="apadrinar">
                     <h:commandButton value="Apadrinar" action="#{apadrinar.apadrinamiento()}"/>
                 </h:form>
-
             </c:when>
             <c:otherwise>
                 <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>

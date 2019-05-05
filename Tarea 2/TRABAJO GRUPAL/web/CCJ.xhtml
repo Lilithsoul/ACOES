@@ -47,7 +47,7 @@
                     </h:dataTable>
                 </h:form>
             </c:when>
-            <c:when test="#{empty controlAutorizacion.usuario}">
+            <c:when test="#{empty controlAutorizacion.usuario or controlAutorizacion.getClase() != 'ADMINISTRADOR'}">
                 <h2 class="block-title block-title-center" style="text-align: center;">¿Que es un CCJ?</h2>
                 <div>    
                     <p>

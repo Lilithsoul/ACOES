@@ -1,4 +1,3 @@
-    
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -52,8 +51,6 @@ public class ControlAutorizacion implements Serializable {
     }
     
     
-    
-    
     public String getClase(){
         
         String clase = "";
@@ -90,11 +87,6 @@ public class ControlAutorizacion implements Serializable {
         return "ninios.xhtml";
     }
     
-    public String historiales(){
-        
-        return "historiales.xhtml";
-    }
-    
     public String conocenos (){
         return "conocenos.xhtml";
     }
@@ -129,13 +121,15 @@ public class ControlAutorizacion implements Serializable {
             
             return "normal.xhtml";
             
-        } else {
-            
+        }else{
             return "Home.xhtml";
-            
         }
         
         
+    }
+    
+    public String historiales(){
+        return "historiales.xhtml";
     }
     
     public String logout()

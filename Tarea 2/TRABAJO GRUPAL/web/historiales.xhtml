@@ -4,7 +4,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+
     <ui:define name="title">Niños</ui:define>
     <ui:define name="content">
         <c:choose>
@@ -23,22 +23,22 @@
                            <f:facet name="header">Fecha final</f:facet>
                            #{historiales.fecha_fin}
                         </h:column>
-                        
+
                         <h:column>
                            <f:facet name="header">Está apadrinado actualmente?</f:facet>
                            #{historiales.apadrinado}
                         </h:column>
-                        
+
                         <h:column>
                            <f:facet name="header">Nombre del niño</f:facet>
                            #{historiales.niño_apadrinado.nombre}
                         </h:column>
-                        
-                        
+
+
                     </h:dataTable>
                 </h:form>
             </c:when>
         </c:choose>
         <h:messages/>
     </ui:define>
-</ui:composition>
+</ui:composition> 

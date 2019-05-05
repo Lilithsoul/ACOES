@@ -48,6 +48,7 @@ public class Apadrinar {
     public void setHistoriales(List<HISTORIAL_APADRINAMIENTO> historiales) {
         this.historiales = historiales;
     }
+    
 
     public List<JOVEN_NIÑO> getNinios() {
         return ninios;
@@ -87,8 +88,8 @@ public class Apadrinar {
         ninios.add(n3);
         ninios.add(n2);
         
-        historiales = new ArrayList<HISTORIAL_APADRINAMIENTO>();
-        
+         historiales = new ArrayList<>();
+
         HISTORIAL_APADRINAMIENTO hp1 = new HISTORIAL_APADRINAMIENTO(fecha, fecha2, true, n3, socio);
         //hp1.add(fecha, fecha2, true, n2, socio);
         HISTORIAL_APADRINAMIENTO hp2 = new HISTORIAL_APADRINAMIENTO(fecha, fecha2, true, n3, socio);
@@ -123,13 +124,10 @@ public class Apadrinar {
             }
             
             i++;
-        
+            
         }
-
         */
-                
         
-         // Implementar este método
         FacesContext ctx = FacesContext.getCurrentInstance();
         ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "No ha sido posible apadrinar a un niño, inténtelo más tarde", "No ha sido posible apadrinar a un niño, inténtelo más tarde"));
         
