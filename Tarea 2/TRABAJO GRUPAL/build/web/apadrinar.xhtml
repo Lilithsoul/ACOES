@@ -16,7 +16,7 @@
             <c:when test="#{controlAutorizacion.getClase() == 'SOCIO'}">
                 <h1>Usuario Socio</h1>
                 <p>Aquí le ofrecemos toda la información para apadrinar un niño <h:outputText value="#{controlAutorizacion.getSocio().getNombre()}"/></p>
-                <p>Si quiere apadrinar un niño pulse aquí: ></p>
+                <p>Si quiere apadrinar un niño pulse aquí: </p>
                 
                 <h:form id="apadrinar">
                     <h:commandButton value="Apadrinar" action="#{apadrinar.apadrinamiento()}"/>

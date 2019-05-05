@@ -29,8 +29,25 @@ import javax.inject.Inject;
 @RequestScoped
 public class Apadrinar {
 
-    //private SOCIO socio;
+    private SOCIO socio;
     private List<JOVEN_NIÑO> ninios;
+    private List<HISTORIAL_APADRINAMIENTO> historiales;
+
+    public SOCIO getSocio() {
+        return socio;
+    }
+
+    public void setSocio(SOCIO socio) {
+        this.socio = socio;
+    }
+
+    public List<HISTORIAL_APADRINAMIENTO> getHistoriales() {
+        return historiales;
+    }
+
+    public void setHistoriales(List<HISTORIAL_APADRINAMIENTO> historiales) {
+        this.historiales = historiales;
+    }
 
     public List<JOVEN_NIÑO> getNinios() {
         return ninios;
@@ -70,14 +87,20 @@ public class Apadrinar {
         ninios.add(n3);
         ninios.add(n2);
         
-        //HISTORIAL_APADRINAMIENTO hp1 = new HISTORIAL_APADRINAMIENTO(fecha, fecha2, true, n3, socio);
+        historiales = new ArrayList<HISTORIAL_APADRINAMIENTO>();
         
-        //HISTORIAL_APADRINAMIENTO hp2 = new HISTORIAL_APADRINAMIENTO(fecha, fecha2, true, n3, s);
+        HISTORIAL_APADRINAMIENTO hp1 = new HISTORIAL_APADRINAMIENTO(fecha, fecha2, true, n3, socio);
+        //hp1.add(fecha, fecha2, true, n2, socio);
+        HISTORIAL_APADRINAMIENTO hp2 = new HISTORIAL_APADRINAMIENTO(fecha, fecha2, true, n3, socio);
+        
+        historiales.add(hp1);
+        historiales.add(hp2);
          
     }
 
     public String apadrinamiento() throws ParseException {  // Pasar parámetros del login
         
+        /*
         boolean cont = true;
         int i = 0;
         
@@ -100,9 +123,11 @@ public class Apadrinar {
             }
             
             i++;
-            
-        }
         
+        }
+
+        */
+                
         
          // Implementar este método
         FacesContext ctx = FacesContext.getCurrentInstance();

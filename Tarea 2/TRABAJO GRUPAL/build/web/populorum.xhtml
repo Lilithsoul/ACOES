@@ -8,7 +8,7 @@
     <ui:define name="title">Populorum actuales</ui:define>
     <ui:define name="content">
         <c:choose>
-            <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR'}">
+            <c:when test="#{empty controlAutorizacion.usuario}">
                 <h:form id="mostrarPopulorum">
                     <h:dataTable  value="#{mostrarPopulorum.populorums}" var="populorum"
                     styleClass="order-table" headerClass="order-table-header"
@@ -32,26 +32,6 @@
                         
                     </h:dataTable>
                 </h:form>
-            </c:when>
-            <c:when test="#{empty controlAutorizacion.usuario}">
-                <h2 class="block-title block-title-center" style="text-align: center;">¿Que es un Populorum?</h2>
-                <div>
-                    <p>
-                        Populorum, inicia el año 2000, buscando dar respuesta a la falta de educación en la población joven más desfavorecida de 
-                        comunidades e indígenas, ya que por falta de recursos económicos y difícil acceso a los centros educativos muchos pierden 
-                        la oportunidad de formarse académicamente. Se les facilitan los medios para vivir y formarse integralmente. Su permanencia se 
-                        fundamenta en cuatro pilares, que son: espiritualidad, colaboración, convivencia y estudio, siendo este último por el cual ingresan 
-                        al proyecto. Gracias a los puntos anteriores se fortalecen los jóvenes y se capacitan para enfrentar los retos que la sociedad les presenta 
-                        y se vuelven mejores personas capaces de ayudar a los demás mientras reciben ayuda de otros.
-                    </p>
-                    <p>
-                        Por las mañanas colaboran en los proyectos de ACOES y por las tardes estudian.
-                    </p>
-                    <p>
-                        Objetivo: Formar jóvenes con una conciencia social crítica, con una personalidad solidaria y humanística que les permita ayudar a 
-                        los más necesitados desempeñando roles de responsabilidad en sus comunidades.
-                    </p>
-                </div>
             </c:when>
             <c:otherwise>
                 <p>Debe salir de la aplicación si quiere entrar como otro usuario</p>

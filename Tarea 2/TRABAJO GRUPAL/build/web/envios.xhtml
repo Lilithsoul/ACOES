@@ -5,10 +5,10 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     
-    <ui:define name="title">CCJ actuales</ui:define>
+    <ui:define name="title">Envíos</ui:define>
     <ui:define name="content">
         <c:choose>
-            <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR'}">
+            <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR' || controlAutorizacion.getClase() == 'SOCIO'}">
                 <h:form id="mostrarEnvios">
                     <h:dataTable  value="#{mostrarNinios.ninios}" var="ninio"
                     styleClass="order-table" headerClass="order-table-header"

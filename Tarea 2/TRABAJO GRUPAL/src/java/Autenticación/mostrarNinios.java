@@ -7,6 +7,7 @@ package Autenticación;
 import acoes.BECA;
 import acoes.CCJ;
 import acoes.ENVIOS;
+import acoes.HISTORIAL_APADRINAMIENTO;
 import acoes.JOVEN_NIÑO;
 import acoes.SOCIO;
 import java.util.ArrayList;
@@ -25,7 +26,9 @@ import javax.inject.Inject;
 @Named(value = "mostrarNinios")
 @RequestScoped
 public class mostrarNinios {
-   private List<JOVEN_NIÑO> ninios;
+    private List<JOVEN_NIÑO> ninios;
+    
+    
 
     public List<JOVEN_NIÑO> getNinios() {
         return ninios;
@@ -94,7 +97,20 @@ public class mostrarNinios {
         
         n1.setEnvios_a_recibir(envios1);
         n2.setEnvios_a_recibir(envios2);
+        
+        /*
+        
+        List<HISTORIAL_APADRINAMIENTO> historiales = new ArrayList<HISTORIAL_APADRINAMIENTO>();
+        
+        HISTORIAL_APADRINAMIENTO hp1 = new HISTORIAL_APADRINAMIENTO(new Date(2010,5,5), new Date(2020,5,5), true, n1, sergio);
+        //hp1.add(fecha, fecha2, true, n2, socio);
+        HISTORIAL_APADRINAMIENTO hp2 = new HISTORIAL_APADRINAMIENTO(new Date(2010,5,5), new Date(2020,5,5), true, n2, pepe);
+        
+        historiales.add(hp1);
+        historiales.add(hp2);
          
+        */
+
     }
 
     public String lista_ninios(){  //

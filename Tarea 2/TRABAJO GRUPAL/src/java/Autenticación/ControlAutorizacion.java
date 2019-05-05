@@ -1,3 +1,4 @@
+    
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -89,6 +90,11 @@ public class ControlAutorizacion implements Serializable {
         return "ninios.xhtml";
     }
     
+    public String historiales(){
+        
+        return "historiales.xhtml";
+    }
+    
     public String conocenos (){
         return "conocenos.xhtml";
     }
@@ -123,8 +129,12 @@ public class ControlAutorizacion implements Serializable {
             
             return "normal.xhtml";
             
-        } 
-        return null;
+        } else {
+            
+            return "Home.xhtml";
+            
+        }
+        
         
     }
     
