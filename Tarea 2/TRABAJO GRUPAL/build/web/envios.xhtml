@@ -67,6 +67,11 @@
                         
                     </h:dataTable>
                 </h:form>
+                <h2>Nuevo Envio</h2>
+                <p>Aquí le ofrecemos toda la información para realizar un nuevo envio
+                    <h:outputText value="#{controlAutorizacion.admin.nombre}"/>
+                </p>
+                <li><a style='background-color: lightblue' href="envioNuevo.xhtml">Crear nuevo envio</a></li>
             </c:when>
         </c:choose>
         <h:messages/>

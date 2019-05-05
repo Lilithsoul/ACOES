@@ -9,8 +9,8 @@
             <c:when test="#{controlAutorizacion.getClase() == 'USUARIO'}">
                 <h1>Usuario normal</h1>
                 <p>Aquí le ofrecemos toda la información para apadrinar un niño <h:outputText value="#{controlAutorizacion.getUsuario().getNombre()}"/></p>
-                <p>Usted aún no es socio, si quiere apadrinar un niño pulse aquí:></p>
-                <a href="formularioSocio.xhtml">Quiero ser SOCIO</a> 
+                <p>Usted aún no es socio, si quiere apadrinar un niño pulse aquí:</p>
+                <li><a style='background-color: lightblue' href="formularioSocio.xhtml">Quiero ser SOCIO</a></li>
             </c:when>
             
             <c:when test="#{controlAutorizacion.getClase() == 'SOCIO'}">
