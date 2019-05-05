@@ -8,7 +8,7 @@
     <ui:define name="title">CCJ actuales</ui:define>
     <ui:define name="content">
         <c:choose>
-            <c:when test="#{empty controlAutorizacion.usuario}">
+            <c:when test="#{controlAutorizacion.getClase() == 'ADMINISTRADOR'}">
                 <h:form id="mostrarCCJ">
                     <h:dataTable  value="#{mostrarCCJ.ccjs}" var="ccj"
                     styleClass="order-table" headerClass="order-table-header"
@@ -46,6 +46,29 @@
                         
                     </h:dataTable>
                 </h:form>
+            </c:when>
+            <c:when test="#{empty controlAutorizacion.usuario}">
+                <h2 class="block-title block-title-center" style="text-align: center;">¿Que es un CCJ?</h2>
+                <div>    
+                    <p>
+                        El Centro de Capacitación Juvenil CCJ, tiene como fin, la integración social de jóvenes de escasos recursos provenientes de 
+                        barrios marginales de Tegucigalpa y de comunidades rurales del interior del país,   a través de una formación integral, garantizando 
+                        su acceso a  la educación oficial, brindándoles  refuerzo escolar,  formación en valores y la participación en el servicio a la comunidad  
+                        mediante el desarrollo de proyectos comunitarios. Promoviendo en ellos, el desarrollo de actitudes y aptitudes de trabajo como el respeto, 
+                        humildad, responsabilidad, puntualidad, honradez, esfuerzo y trabajo. Generando una gran sensibilidad ante la situación de pobreza por la 
+                        que muchas personas pasan.
+                    </p>
+                    <p>
+                        Los jóvenes que se capacitan y colaboran por las mañanas en el centro, por las tardes estudian en diversos institutos y universidades públicas.
+                    </p>
+                    <p>
+                        Los estudiantes reciben una ayuda económica para sus estudios y transporte que se determina por la Junta de Responsables según la implicación 
+                        y colaboración de cada uno de ellos en el proyecto. El gasto está incluido en el proyecto en el que colabora.
+                    </p>
+                    <p>
+                        En el Centro de Capacitación Juvenil se gestionan y coordinan los proyectos de ACOES.
+                    </p>
+                </div>
             </c:when>
             <c:otherwise>
                 <p>Debe salir de la aplicación si quiere entrar como otro usuario</p>
