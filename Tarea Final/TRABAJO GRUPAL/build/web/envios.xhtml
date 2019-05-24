@@ -72,7 +72,11 @@
                             </h:column>
                         </h:dataTable>
                         </h:column>
-                        
+                        <h:column>
+
+                            <li style="list-style: none;"><a style='text-shadow: 2px 2px #000000;text-decoration: none; padding: 10px; font-weight: 600; font-size: 12px; color: #ffffff; background-color: #ff5733; border-radius: 6px; border: 2px solid #ff1600;' href="modificarEnvio.xhtml">Modificar envio</a></li>
+
+                        </h:column>
                     </h:dataTable>
                 </h:form>
                 </div>
@@ -80,7 +84,7 @@
                 <p>Aquí le ofrecemos toda la información para realizar un nuevo envio
                     <h:outputText value="#{controlAutorizacion.admin.nombre}"/>
                 </p>
-                <li><a style='background-color: lightblue' href="envioNuevo.xhtml">Crear nuevo envio</a></li>
+                <li><a style='text-shadow: 2px 2px #000000; text-decoration: none; padding: 10px; font-weight: 600; font-size: 20px; color: #ffffff; background-color: #1883ba; border-radius: 6px; border: 2px solid #0016b0;' href="envioNuevo.xhtml">Crear nuevo envio</a></li>
             </c:when>
         </c:choose>
         <h:messages/>

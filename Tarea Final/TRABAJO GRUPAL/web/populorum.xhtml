@@ -15,11 +15,12 @@
                        outline-style: outset; 
                        outline-color: lightblue; 
                        outline-width: 10px; 
-                       margin-top: 1%;">
+                       margin-top: 1%;
+                       box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);">
                 <h:form id="mostrarPopulorum">
                     <h:dataTable  value="#{mostrarPopulorum.populorums}" var="populorum"
                     styleClass="order-table" headerClass="order-table-header"
-                    rowClasses="order-table-odd-row,order-table-even-row">
+                    rowClasses="order-table-odd-row,order-table-even-row" style="margin: 10px">
 
                         <h:column>
                             <f:facet name="header"> Nombre </f:facet>
@@ -38,20 +39,20 @@
                         
                       <h:column>
 
-                            <li><a style="background-color: red" href="eliminarPopulorum.xhtml">Eliminar Populorum</a></li>
+                          <li style="list-style:none"><a style='text-shadow: 2px 2px #000000; text-decoration: none; padding: 10px; font-weight: 600; font-size: 12px; color: #ffffff; background-color: #FE2E2E; border-radius: 6px; border: 2px solid #ff0000;' href="eliminarPopulorum.xhtml">Eliminar Populorum</a></li>
 
                         </h:column>
 
 
                         <h:column>
 
-                            <li><a style="background-color: orange" href="editarPopulorum.xhtml">Editar Populorum</a></li>
+                            <li style='list-style:none'><a style='text-shadow: 2px 2px #000000; text-decoration: none; padding: 10px; font-weight: 600; font-size: 12px; color: #ffffff; background-color: #FAAC58; border-radius: 6px; border: 2px solid #ff8000;' href="editarPopulorum.xhtml">Editar Populorum</a></li>
 
                         </h:column>
 
                     </h:dataTable>
 
-                         <li><a style="background-color: green; margin-top: 20px" href="aniadirPopulorum.xhtml">Añadir Populorum</a></li>
+                         <li><a style="text-shadow: 2px 2px #000000; text-decoration: none; padding: 10px; font-weight: 600; font-size: 12px; color: #ffffff; background-color: #2EFE2E; border-radius: 6px; border: 2px solid #04B404; margin-top: 20px" href="aniadirPopulorum.xhtml">Añadir Populorum</a></li>
 
                 </h:form>
                 </div>
