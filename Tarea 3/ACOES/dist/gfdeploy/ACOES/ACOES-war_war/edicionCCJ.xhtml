@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">CCJ actuales</ui:define>
+    <ui:define name="content">
+    <h:head>
+        <title>
+            <c:choose> 
+                <c:when test="#{ccjs.autorizadoParaEdicion}">
+                    <h:outputText value="ccj"/>
+                </c:when>
+                <c:otherwise>
+                    Acceso irregular
+                </c:otherwise>
+            </c:choose>
+        </title>
+    </h:head>
+    <h:body>
+
+        <c:choose> 
+            <c:when test="#{ccjs.autorizadoParaEdicion}">
+                <div style="background-color:#ebfafa; 
+                       margin-right: 20%;
+                       margin-left: 20%;
+                       opacity: 0.9; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 2%;
+                       text-align: center;">   
+                <h1  style="font: 30px Monserrat, sans-serif;">¿Qué quieres cambiar? </h1>
+                
+                <h:form id="ccjs">
+                    <table style="opacity: 1;
+                         text-align: center;
+                         padding-bottom: 20px;
+                         font: 17px Monserrat, sans-serif;
+                        
+                         width: 80%;">
+                        
+                        <tr>
+                            <td>Nombre: </td>
+                            <td><h:inputText style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="nombre" value="#{ccjs.ccj.nombre}" required="true"/>
+                              </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Región: </td>
+                            <td><h:inputText style="padding: 10px 15px;
+                                             box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="region" value="#{ccjs.ccj.region}" required="true"/>
+                               </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Nación: </td>
+                            <td><h:inputText style="padding: 10px 15px;
+                                             box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="nacion" value="#{ccjs.ccj.nacion}" required="true"/>
+                              </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Dirección: </td>
+                            <td><h:inputText style="padding: 10px 15px;
+                                             box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="direccion" value="#{ccjs.ccj.direccion}" required="true"/>
+                        </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Teléfono: </td>
+                            <td><h:inputText style="padding: 10px 15px;
+                                             box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="tlf" value="#{ccjs.ccj.telefono}" required="true" maxlength="9"/>
+                             </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Descripción: </td>
+                            <td><h:inputText style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="descripcion" value="#{ccjs.ccj.descripcion}" required="true"/>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>E-mail: </td>
+                            <td><h:inputText style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="email" value="#{ccjs.ccj.email}" required="true"
+                                    validatorMessage="Compruebe que ha introducido un e-mail correcto">
+                                    <f:validateRegex pattern=".+@.+"/>
+                                </h:inputText>
+                              </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><h:commandButton value="#{ccjs.accion}" style=" background-color: green;
+                                                color: white;
+                                                font-size: 20px;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" action="#{ccjs.ejecutarAccionCCJ()}"/></td>
+                            
+                        </tr>
+                        <h:inputHidden value="#{ccjs.modo}"/>
+                        <h:inputHidden value="#{ccjs.ccj.id}"/>
+
+                    </table>
+                </h:form>
+                <h:form><td><h:commandButton value="Cancelar" style=" background-color: #f44336;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                font-size: 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block" action="CCJ.xhtml"/></td></h:form>
+                </div>
+                <img src="https://image.freepik.com/vector-gratis/fondo-dibujos-animados-aula-vacia-interior-interior_1441-1735.jpg"
+                     style="z-index: -30; width: 100%; right:0; top:0;"></img>
+            </c:when>
+            <c:otherwise>
+                <p>No está autorizado para ver esta página.</p>
+            </c:otherwise>
+        </c:choose>
+
+    </h:body>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">error CCJ</ui:define>
+    <ui:define name="content">
+    <h:head>
+        <title>
+            <c:choose> 
+                <c:when test="#{ccjs.autorizadoParaEdicion}">
+                    <h:outputText value="ccj"/>
+                </c:when>
+                <c:otherwise>
+                    Acceso irregular
+                </c:otherwise>
+            </c:choose>
+        </title>
+    </h:head>
+    <h:body>
+
+        <c:choose> 
+            <c:when test="#{ccjs.autorizadoParaEdicion}">
+                
+                <h2  style="padding-left: 20%; padding-right: 2 0%; textfont: 30px Monserrat, sans-serif;">No puedes
+                eliminar CCJs con niños dentro.</h2>
+                
+                  <div style="width:100%; text-align: center;">
+                <h:form>
+                    <td>
+                        <h:commandButton style=" background-color: #f44336;
+                                                color: white;
+                                                padding: 30px 40px;
+                                                font-size: 40px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;"
+                                                value="Volver" action="CCJ.xhtml"/>
+                    </td>
+                </h:form>
+                </div>
+               
+                <img src="https://publicdomainvectors.org/photos/1553625859.png"
+                     style="z-index: -30; width: 100%; left:0; bottom:0;"></img>
+            </c:when>
+            <c:otherwise>
+                <p>No está autorizado para ver esta página.</p>
+            </c:otherwise>
+        </c:choose>
+
+    </h:body>
+    </ui:define>
+</ui:composition>

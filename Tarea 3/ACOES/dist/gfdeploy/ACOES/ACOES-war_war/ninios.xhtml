@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">CCJ actuales</ui:define>
+    <ui:define name="content">
+    <h:head>
+        <title>Lista de contactos</title>
+    </h:head>
+    <h:body>
+        <c:choose>
+            <c:when test="#{empty infoSesion.usuario}">
+                
+                <p>No tiene autorización para ver esta página, debe autenticarse antes.</p>
+                
+            </c:when>
+            
+            <c:when test="#{infoSesion.usuario.role == 'ADMINISTRADOR'}">
+                   
+                <div style="background-color:#ebfafa; 
+                       margin-left: 1%; 
+                       margin-right:10%; 
+                       margin-left: 10%;
+                       font: 15px Monserrat, sans-serif;
+                       opacity: 0.9; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 1%;
+                       z-index: 30;
+                       padding-bottom: 1%;
+                       ">
+                    
+                    <h:form id="ninios" style="font: 15px Monserrat, sans-serif;">
+                        
+                        <c:if test="#{empty infoSesion.ninios}">
+                        
+                        <p style="width: 100%; text-align: center; "><br>  No existen niños actualmente. </br> </p>
+                        
+                        </c:if>
+
+                        <c:if test="#{!empty infoSesion.ninios}">
+
+                            <h:dataTable value="#{infoSesion.ninios}" var="e"
+                            styleClass="order-table" headerClass="order-table-header"
+                            rowClasses="order-table-odd-row,order-table-even-row" style=" border-collapse: separate; border-spacing: 5px;">
+                                
+                                <h:column >
+                                    <f:facet name="header">ID</f:facet>
+                                    <h:outputText value="#{e.id}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Nombre</f:facet>
+                                    <h:outputText value="#{e.nombre}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Apellido 1 </f:facet>
+                                    <h:outputText value="#{e.apellido1}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Apellido 2</f:facet>
+                                    <h:outputText value="#{e.apellido2}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Descripción</f:facet>
+                                    <h:outputText value="#{e.descripcion}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Fecha de Nacimiento</f:facet>
+                                    <h:outputText value="#{e.fechaNacimiento}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Nacionalidad</f:facet>
+                                    <h:outputText value="#{e.nacionalidad}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">¿Apadrinado?</f:facet>
+                                    <h:outputText value="#{e.apadrinado}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Socio</f:facet>
+                                    <h:outputText value="#{historiales.getPadrino(e)}"/>   
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">CCJ</f:facet>
+                                    <h:outputText value="#{e.ccj.nombre}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Populorum</f:facet>
+                                    <h:outputText value="#{e.cp.nombre}"/>
+                                </h:column>
+                       
+                                <h:column>
+                                    <f:facet name="header">Beca</f:facet>
+                                    <h:dataTable value="#{e.becas}" var="b"
+                                    styleClass="order-table" headerClass="order-table-header"
+                                    rowClasses="order-table-odd-row,order-table-even-row">
+                                        <h:column>
+                                            
+                                    <f:facet name="header"></f:facet>
+                                    <h:outputText value="#{b.nombre}"/>
+                                </h:column>
+                                    </h:dataTable>
+                                    
+                                </h:column>
+                                  <hr></hr>  
+                                <c:if test="#{infoSesion.usuario.role == 'ADMINISTRADOR'}">
+
+                                    <h:column>
+                                        <h:commandButton value="Modificar" style=" background-color: green;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;"
+                                                action="#{ninios.modificarNinio(e)}"/>
+                                    </h:column>
+
+                                    <h:column>
+                                        <h:commandButton style=" background-color: #f44336;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" 
+                                                value="Eliminar" action="#{ninios.eliminarNinio(e)}"/>
+                                    </h:column>
+ 
+                                 </c:if>
+
+                            </h:dataTable>
+                            
+                            </c:if>
+
+                            <c:if test="#{infoSesion.usuario.role == 'ADMINISTRADOR'}">
+                                <h:commandButton value="Insertar" style="background-color: #cccc00;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" 
+                                                action="#{ninios.insertarNinio()}"/>
+                                <h:commandButton value="Refrescar" style="background-color: #f44336;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" 
+                                                action="#{ninios.refrescar()}"/>
+                            </c:if>
+
+                    </h:form>
+                       
+                   </div>
+            </c:when>
+            
+            <c:when test="#{infoSesion.usuario.role == 'SOCIO'}">
+                
+                 <div style="background-color:#ebfafa; 
+                       margin-left: 1%; 
+                       margin-right: 30%; 
+                       margin-left: 30%;
+                       font: 15px Monserrat, sans-serif;
+                       opacity: 0.9; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 1%;
+                       z-index: 30;
+                       padding-bottom: 1%;
+                       ">
+                    
+                <h:form id="historiales" style="font: 15px Monserrat, sans-serif;">
+                    
+                    <c:if test="#{empty infoSesion.historiales}">
+                        
+                        <p style="width: 100%; text-align: center; "><br> Actualmente no tienes ningún niño apadrinado. </br></p>
+                        
+                        </c:if>
+
+                    <c:if test="#{!empty infoSesion.historiales}">
+                    
+                    <h:dataTable value="#{infoSesion.historiales}" var="e"
+                    styleClass="order-table" headerClass="order-table-header"
+                    rowClasses="order-table-odd-row,order-table-even-row">
+                        
+                        <h:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            <h:outputText value="#{e.niño_apadrinado.nombre}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Apellidos</f:facet>
+                            <h:outputText value="#{e.niño_apadrinado.apellido1} #{e.niño_apadrinado.apellido2}"/>
+                        </h:column>  
+                        
+                        <h:column>
+                            <f:facet name="header">Fecha inicio</f:facet>
+                            <h:outputText value="#{e.fecha_inicio}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Fecha fin</f:facet>
+                            <h:outputText value="#{e.fecha_fin}"/>
+                        </h:column>
+                        
+ 
+                        <h:column>
+                            <f:facet name="header">¿Apadrinado?</f:facet>
+                            <h:outputText value="#{e.apadrinado}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <h:commandButton value="Más detalles" style=" background-color: green;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center;
+                                                text-decoration: none;
+                                                display:block;" action="#{ninios.detalles(e)}"/>
+                        </h:column>                        
+                   
+                        </h:dataTable>
+                        
+                        <c:if test="#{!empty infoSesion.enviosSocio}">
+
+                           <div style="outline-style: outset; 
+                           outline-color: lightblue; 
+                           outline-width: 3px; text-align: center; margin:5%; ">     
+                           <h:dataTable value="#{infoSesion.enviosSocio}" var="e" > 
+                            <h:column>
+                                <f:facet name="header">Destinatario</f:facet>
+                                <h:outputText value="#{e.niño_envio.nombre}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Apellido</f:facet>
+                                <h:outputText value="#{e.niño_envio.apellido1}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Descripción</f:facet>
+                                <h:outputText value="#{e.descripcion}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Estado</f:facet>
+                                <h:outputText value="#{e.estado}"/>
+                            </h:column>
+
+                        </h:dataTable>
+                           
+                       </div>
+                    </c:if>
+                        
+                        </c:if>
+                    
+                    <h:commandButton value="Apadrinar" style=" background-color: #cccc00;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block; margin-top: 10px;" action="#{historiales.apadrinar()}"/>
+                    
+                    <h:commandButton value="Refrescar apadrinamientos" style=" background-color: #cccc00;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block; margin-top: 10px;" action="#{infoSesion.refrescarApadrinamientos()}"/>
+                    
+                   
+                    
+                </h:form>
+                </div>
+                </c:when>
+            
+        </c:choose>
+        <img src="https://static.vecteezy.com/system/resources/previews/000/414/335/large_2x/vector-banner-template-with-four-happy-kids.jpg" style="margin:-10px; z-index: -30;"></img>
+    </h:body>
+        
+    </ui:define>
+</ui:composition>

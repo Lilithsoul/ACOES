@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">Becas actuales</ui:define>
+    <ui:define name="content">
+    <h:body>
+        <c:choose>
+            
+            <c:when test="#{empty infoSesion.usuario or infoSesion.usuario.role == 'USUARIO'}">
+
+                    <p style="padding-left: 20%; padding-right: 20%; text-align:justify; font: 20px Monserrat, sans-serif; text-align: center; color: #6666ff">
+                        No tienes acceso a esta página.
+                    </p>
+                
+            </c:when>
+            <c:otherwise>
+   
+                <div style="background-color:#ebfafa; 
+                       margin-left: 1%; 
+                       margin-right: 20%; 
+                       margin-left: 20%;
+                       font: 15px Monserrat, sans-serif;
+                       opacity: 0.9; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 1%;
+                       z-index: 30;
+                       padding-bottom: 1%;
+                       ">
+                <h:form id="becas" style="font: 15px Monserrat, sans-serif;">           
+                    
+                    <c:if test="#{empty infoSesion.beca}">
+                    
+                        <c:if test="#{infoSesion.usuario.role == 'SOCIO'}">
+
+                              <p style="width: 100%; text-align: center; "><br> No existen Becas asociadas a tus apadrinados actualmente.</br>
+
+                              </p>
+
+                        </c:if>
+
+                        <c:if test="#{infoSesion.usuario.role == 'ADMINISTRADOR'}">
+
+                              <p style="width: 100%; text-align: center; "><br> No existen Becas actualmente.</br>
+
+                              </p>
+
+                        </c:if>
+                    </c:if>
+                    
+
+                    <c:if test="#{!empty infoSesion.beca}">
+
+                        <h:dataTable  value="#{infoSesion.beca}" var="b"
+                        styleClass="order-table" headerClass="order-table-header"
+                        rowClasses="order-table-odd-row,order-table-even-row" style=" border-collapse: separate; border-spacing: 30px; ">
+
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                <h:outputText value="#{b.id}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Nombre</f:facet>
+                                <h:outputText value="#{b.nombre}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Cuantía</f:facet>
+                                <h:outputText value="#{b.cuantia}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Fecha emisión</f:facet>
+                                <h:outputText value="#{b.fechaEmision}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Fecha fin</f:facet>
+                                <h:outputText value="#{b.fechaFin}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Descripción</f:facet>
+                                <h:outputText value="#{b.descripcion}"/>
+                            </h:column>
+
+                            <c:if test="#{infoSesion.usuario.role == 'ADMINISTRADOR'}">
+
+                            <h:column>
+                                <h:commandButton value="Modificar" style=" background-color: green;
+                                                    color: white;
+                                                    padding: 10px 20px;
+                                                    text-align: center; 
+                                                    text-decoration: none;
+                                                    display: inline-block;" action="#{becas.modificarBeca(b)}"/>
+                            </h:column>
+
+                            <h:column>
+                                <h:commandButton value="Eliminar" style=" background-color: #f44336;
+                                                    color: white;
+                                                    padding: 10px 20px;
+                                                    text-align: center; 
+                                                    text-decoration: none;
+                                                    display: inline-block;" action="#{becas.eliminarBeca(b)}"/>
+                            </h:column>
+
+                            </c:if>
+
+                        </h:dataTable>
+                    </c:if>
+                    
+                    <c:if test="#{infoSesion.usuario.role == 'ADMINISTRADOR'}">
+
+                            <h:commandButton value="Insertar" style="background-color: #cccc00;
+                                                    color: white;
+                                                    padding: 10px 20px;
+                                                    text-align: center; 
+                                                    text-decoration: none;
+                                                    display: inline-block;"  action="#{becas.insertarBeca()}"/>
+                            <h:commandButton value="Refrescar" style="background-color: #f44336;
+                                                    color: white;
+                                                    padding: 10px 20px;
+                                                    text-align: center; 
+                                                    text-decoration: none;
+                                                    display: inline-block;" action="#{becas.refrescar()}"/>
+
+                        </c:if>
+                    
+                </h:form>
+                </div>
+
+            </c:otherwise>
+        </c:choose>
+        <img src="https://image.freepik.com/vector-gratis/biblioteca-publica-interior-pila-libro-estanteria-plana_7081-837.jpg"
+             style="z-index: -30; top:0; lef:0; width: 100%; opacity: 0.8"></img>
+    </h:body>
+    </ui:define>
+</ui:composition>

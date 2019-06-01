@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:define name="title">Niños actuales</ui:define>
+    <ui:define name="content">
+    <h:head>
+        <title>
+            <c:choose> 
+                <c:when test="#{ninios.autorizadoParaEdicion}">
+                    <h:outputText value=" contacto"/>
+                </c:when>
+                <c:otherwise>
+                    Acceso irregular
+                </c:otherwise>
+            </c:choose>
+        </title>
+    </h:head>
+    <h:body>
+
+ 
+
+                <div style="background-color:#ebfafa; 
+                       margin-right: 30%;
+                       margin-left: 30%;
+                       opacity: 0.9; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 2%;
+                       text-align: center;">   
+                <h1  style="font: 30px Monserrat, sans-serif;">¿Qué quieres cambiar? </h1>
+                <h:form id="ninio">
+                    <table style="opacity: 1;
+                         text-align: center;
+                         padding-bottom: 20px;
+                         font: 17px Monserrat, sans-serif;
+                        
+                         width: 100%;">   
+                         
+                        <tr>
+                            <td>Id: </td>
+                            <td> <h:outputText style="padding: 10px 15px;
+                                              box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="id"  value="#{ninios.ninio.id}"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Nombre:</td>
+                            <td> <h:outputText style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="nombre" value="#{ninios.ninio.nombre}"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Apellido 1:</td>
+                            <td><h:outputText style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="apellido1" value="#{ninios.ninio.apellido1}"/>
+                                <h:message for="apellido1"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Apellido 2:</td>
+                            <td><h:outputText style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="apellido2" value="#{ninios.ninio.apellido2}"/>
+                                <h:message for="apellido2"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Descripción </td>
+                            <td><h:outputText style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="descripcion" value="#{ninios.ninio.descripcion}"/>
+                                <h:message for="descripcion"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Fecha de nacimiento: </td>
+                            <td><h:outputText style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="fN" value="#{ninios.ninio.fechaNacimiento}"/>
+                                <h:message for="fN"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Nacionalidad: </td>
+                            <td><h:outputText style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="nacionalidad" value="#{ninios.ninio.nacionalidad}"/>
+                                <h:message for="nacionalidad"/> </td>
+                        </tr>
+                      
+
+
+                        <tr>
+                            <td>CCJ</td>  
+                            <td><h:outputText style="padding: 10px 15px;
+                                             box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="CCJ" value="#{ninios.ninio.ccj.nombre}"/>
+                                <h:message for="CCJ"/> </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Populorum</td>
+                            <td><h:outputText style="padding: 10px 15px;
+                                             box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" id ="POPULORUM" value="#{ninios.ninio.cp.nombre}"/>
+                                <h:message for="POPULORUM"/> </td>
+                        </tr>
+                        
+                      
+                        <tr>
+                        <h:column>
+                            <td>Beca: </td>
+                            <td>    <h:dataTable value="#{ninios.ninio.becas}" var="b"
+                                    styleClass="order-table" headerClass="order-table-header"
+                                    rowClasses="order-table-odd-row,order-table-even-row">
+                                        <h:column> 
+                                            
+                                    <f:facet name="header"></f:facet>
+                                    <h:outputText value="#{b.nombre}"/> 
+                                </h:column>
+                                    </h:dataTable>
+                            </td>
+                                </h:column>
+                            
+                        </tr>
+
+                       
+                        <h:inputHidden value="#{ninios.modo}"/>
+                        <h:inputHidden value="#{ninios.ninio.id}"/>
+                    </table>
+                </h:form>
+                <h:form>
+
+                <h:dataTable value="#{envios.envio}" var="e">
+                        <h:column>
+                            <f:facet name="header">ID Niño</f:facet>
+                            <h:inputText value="#{envios.ninio}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Descripción</f:facet>
+                            <h:inputText value="#{envios.envio.descripcion}"/>
+                        </h:column>
+                    
+                        <h:column>
+                            <h:commandButton value="Nuevo Envío" action="#{envios.insertarEnvioSocioID()}"/>
+                        </h:column>
+                    </h:dataTable>
+                        
+                    </h:form>
+                </div>   
+                <img src="https://image.freepik.com/vector-gratis/nino-pensando-pregunta-o-duda_7710-38.jpg" style="z-index: -30; width: 50%; top:0; right: 0;"></img>
+  
+       
+    </h:body>
+        
+    </ui:define>
+</ui:composition>

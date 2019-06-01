@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">Envíos actuales</ui:define>
+    <ui:define name="content">
+    <h:body>
+        <c:choose>
+            <c:when test="#{infoSesion.usuario.role != 'ADMINISTRADOR'}">
+                <p>No tiene autorización para ver esta página, debe autenticarse antes.</p>
+            </c:when>
+            <c:otherwise>
+                <div style="background-color:#ebfafa; 
+                       margin-left: 1%; 
+                       margin-right: 25%; 
+                       margin-left: 25%;
+                       font: 15px Monserrat, sans-serif;
+                       opacity: 0.9; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 1%;
+                       z-index: 30;
+                       padding-bottom: 1%;
+                       ">
+                <h:form id="envios" style="font: 15px Monserrat, sans-serif; width: 100%;">
+                    
+                    <c:if test="#{empty infoSesion.envios}">
+                        
+                        <p style="width: 100%; text-align: center; "><br> No existen envíos actualmente.</br></p>
+
+                    </c:if>
+                    
+                    <c:if test="#{!empty infoSesion.envios}">
+                    
+                    <h:dataTable value="#{infoSesion.envios}" var="e"
+                    styleClass="order-table" headerClass="order-table-header"
+                    rowClasses="order-table-odd-row,order-table-even-row">
+                        <h:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            <h:outputText value="#{e.niño_envio.nombre}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Descripción</f:facet>
+                            <h:outputText value="#{e.descripcion}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Estado</f:facet>
+                            <h:outputText value="#{e.estado}"/>
+                        </h:column>
+                        
+                        <c:if test="#{e.estado != 2}">
+                            <h:column>
+                                <h:commandButton value="Enviado" action="#{envios.aceptarEnvio(e)}"/>
+                            </h:column>
+
+                            <h:column>
+                                <h:commandButton value="Recibido" action="#{envios.envioRecibido(e)}"/>
+                            </h:column>
+                        </c:if>
+                        <h:column>
+                            <h:commandButton value="Eliminar" action="#{envios.eliminarEnvio(e)}"/>
+                        </h:column>
+                       <li style="list-style: none;"><a style='text-shadow: 2px 2px #000000;text-decoration: none; padding: 10px; font-weight: 600; font-size: 12px; color: #ffffff; background-color: #ff5733; border-radius: 6px; border: 2px solid #ff1600;' href="modificarEnvio.xhtml">Modificar envio</a></li>
+
+                    </h:dataTable>
+                        
+                    </c:if>
+                    
+                    <div style="width: 100%;">
+                        <h:commandButton value="Insertar" style=" background-color: green;
+                                                color: white;
+                                                font-size: 20px;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" action="edicionEnvios.xhtml"/>
+                    <h:commandButton value="Refrescar" style=" background-color: #f44336;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                font-size: 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" action="#{envios.refrescar()}"/>
+                    </div>
+                </h:form>
+                </div>
+                         <img src="https://image.freepik.com/vector-gratis/paquetes-postales-isometricos-correos_33099-720.jpg" 
+                 style="bottom: 0; left:0; width: 50%; z-index: -30; opacity: 0.6"></img>
+            </c:otherwise>
+        </c:choose>
+
+    </h:body>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- PÁGINA ACABADA -->
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:define name="title">Becas actuales</ui:define>
+    <ui:define name="content">
+    
+    <h:head>
+        <title>
+            <c:choose> 
+                <c:when test="#{becas.autorizadoParaEdicion}">
+                    <h:outputText value="beca"/>
+                </c:when>
+                <c:otherwise>
+                    Acceso irregular
+                </c:otherwise>
+            </c:choose>
+        </title>
+    </h:head>
+    <h:body>
+
+        <c:choose> 
+            <c:when test="#{becas.autorizadoParaEdicion}">
+                <div style="background-color:#ebfafa; 
+                       margin-right: 37%;
+                       margin-left: 37%;
+                       opacity: 0.9; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 2%;
+                       text-align: center;">   
+                <h1  style="font: 30px Monserrat, sans-serif;">¿Qué quieres cambiar? </h1>
+                <h:form id="becas">
+                    <table style="opacity: 1;
+                         text-align: center;
+                         padding-bottom: 20px;
+                         font: 17px Monserrat, sans-serif;
+                        
+                         width: 100%;">
+                        <tr>
+                            <td>Nombre: </td>
+                            <td><h:inputText id ="nombre" style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 5px" value="#{becas.beca.nombre}" required ="true"/>
+                                </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Cuantía</td>
+                            <td><h:inputText id ="cuantia" style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 5px" value="#{becas.beca.cuantia}" required ="true"/>
+                              </td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de inicio: </td>
+                            <td><h:inputText style="padding: 10px 15px; box-sizing: border-box; text-align: center; 
+                                             margin:5px; font-size: 100%px; padding-bottom: 10px" id ="fi" value="#{becas.beca.fechaEmision}" required ="true"
+                                
+                            label = "Date" > 
+                                    <f:convertDateTime pattern = "dd-mm-yyyy" /></h:inputText>
+                        
+                                  <p style="font-size: 3; margin-top: -3px; font-size:10px;">dd-mm-yyyy</p>
+                            
+                            </td>
+                        </tr>  
+                        
+                        <tr>
+                            <td>Fecha de finalización: </td>
+                            <td><h:inputText style="padding: 10px 15px; box-sizing: border-box; text-align: center; 
+                                             margin:5px; font-size: 100%px; padding-bottom: 10px" id ="fN" value="#{becas.beca.fechaFin}" required ="true"
+                                
+                            label = "Date" > 
+                                    <f:convertDateTime pattern = "dd-mm-yyyy" /></h:inputText>
+                    
+                                  <p style="font-size: 3; margin-top: -3px; font-size:10px;">dd-mm-yyyy</p>
+                            
+                            </td>
+                        </tr>   
+                        
+                        <tr>
+                            <td>Descripción: </td>
+                            <td><h:inputText id ="descripcion" style="padding: 10px 15px;
+                            box-sizing: border-box; text-align: center; margin:5px; font-size: 100%px;padding-bottom: 10px" value="#{becas.beca.descripcion}" required ="true"/>
+                            </td>
+                        </tr>    
+                        
+                        <tr>
+                            <td><h:commandButton value="#{becas.accion}"  style=" background-color: green;
+                                                color: white;
+                                                font-size: 20px;
+                                                padding: 10px 15px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" action="#{becas.ejecutarAccionBeca()}"/></td>
+                                                
+                        </tr>
+                        
+                            <h:inputHidden value="#{becas.modo}"/>
+                            <h:inputHidden value="#{becas.beca.id}"/>
+
+
+                    </table>
+                </h:form>
+                
+                <h:form><td> <h:commandButton value="Cancelar" style=" background-color: #f44336;
+                                                color: white;
+                                                padding: 10px 15px;
+                                                font-size: 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block" action="beca.xhtml"/></td></h:form>
+                
+                  </div>
+                 <img src="https://image.freepik.com/vector-gratis/estudiantes-universitarios-sentados-banca-ilustracion-ninas-ninos-universitarios-bolsas-laptop_33099-812.jpg"
+                      style="z-index: -30; top:0; left:0; width: 100%"></img>
+            </c:when>
+            <c:otherwise>
+                <p>No está autorizado para ver esta página.</p>
+            </c:otherwise>
+         
+        </c:choose>
+
+    </h:body>
+    </ui:define>
+</ui:composition>
