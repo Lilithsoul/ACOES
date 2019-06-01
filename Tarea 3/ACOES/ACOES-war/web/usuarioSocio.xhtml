@@ -41,11 +41,11 @@
                             
                         <tr>
                             <td><h:inputText style="padding: 15px 20px;
-                                    box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;" a:placeholder='Cuenta Bancaria' id ="cuenta_bancaria" value="#{registro.usuario.num_cuenta_bancaria}" required="true" validatorMessage="Compruebe que ha introducido una cuenta bancaria correcta" maxlength="25">
+                                    box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;" a:placeholder='Cuenta Bancaria' id ="cuenta_bancaria" value="#{registro.usuario.num_cuenta_bancaria}" required="true" validatorMessage="Compruebe que ha introducido una cuenta bancaria correcta" maxlength="20">
                                     <f:validateRegex pattern="[A-Z]{2}[0-9]{2}(?:[ ]?[0-9]{4}){4}"/>
                                     
                                     </h:inputText>
-                                <p style="font-size: 3; margin-top: -3px; font-size:10px;">Formato:  ESXX XXXX XXXX XXXX XXXX XXXX</p>
+                                <p style="font-size: 3; margin-top: -3px; font-size:10px;">Formato:  ESXXXXXXXXXXXXXXXXXXXXXX (ES+18 DÍGITOS)</p>
                                     
                             </td>
                                     
