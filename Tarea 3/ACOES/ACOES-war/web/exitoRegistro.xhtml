@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>
+            <c:choose>
+                <c:when test="#{registro.registroOK}">
+                    Registro con éxito
+                </c:when>
+                <c:otherwise>
+                    Acceso irregular
+                </c:otherwise>
+
+            </c:choose>
+        </title>
+    </h:head>
+    <h:body>
+        <c:choose>
+           <c:when test="#{registro.registroOK}"> 
+                   <div>
+                   <img src="https://image.freepik.com/foto-gratis/mujer-alegre-brazos-levantados_23-2147771624.jpg" style="z-index: -100; width: 100%;"></img>
+
+                    <p style="font: 50px Monserrat, sans-serif; z-index: 40; position: absolute; top:4%; left:4%">¡Bien, ya perteneces a ACOES!</p>
+                     <p><h:link outcome="login.xhtml" style='position: absolute; 
+                                top:20%; 
+                                left:20%; 
+                                font: 30px Monserrat, sans-serif;
+                                background-color: #f44336;
+                                color: white;
+                                padding: 14px 25px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;'>Inicia sesión</h:link></p>
+                </div>
+            </c:when>
+            <c:otherwise>
+                No tiene autorización para acceder a esta página.
+            </c:otherwise>
+
+        </c:choose>
+
+
+    </h:body>
+</html>
+

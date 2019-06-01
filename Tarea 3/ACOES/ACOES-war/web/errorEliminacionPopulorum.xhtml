@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">error Populorum</ui:define>
+    <ui:define name="content">
+    <h:head>
+        <title>
+            <c:choose> 
+                <c:when test="#{populorums.autorizadoParaEdicion}">
+                    <h:outputText value="cp"/>
+                </c:when>
+                <c:otherwise>
+                    Acceso irregular
+                </c:otherwise>
+            </c:choose>
+        </title>
+    </h:head>
+    <h:body>
+
+        <c:choose> 
+            <c:when test="#{populorums.autorizadoParaEdicion}">
+               
+                <h2  style="font: 30px Monserrat, sans-serif;">No puedes eliminar un Populorum con niños asignados</h2>
+                
+                <h:form><td> <h:commandButton style=" background-color: #f44336;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                font-size: 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" value="Volver" action="populorum.xhtml"/></td></h:form>
+                 </div>
+                <img src="https://image.freepik.com/vector-gratis/pasillo-dibujos-animados-pasillo-muchas-puertas-colegio-universidad-u-edificio-oficinas_33099-1035.jpg"
+                     style="width: 100%; top: 0; left:0; z-index: -30; align-content: "></img>
+            </c:when>
+            <c:otherwise>
+                <p>No está autorizado para ver esta página.</p>
+            </c:otherwise>
+        </c:choose>
+
+    </h:body>
+    </ui:define>
+</ui:composition>

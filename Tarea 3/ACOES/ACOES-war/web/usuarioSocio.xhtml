@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                 xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Lista de Envios</title>
+    </h:head>
+    <ui:define name="content">
+    <h:body>
+        <c:choose>
+            <c:when test="#{empty infoSesion.usuario}">
+                <p>No tiene autorización para ver esta página, debe autenticarse antes.</p>
+            </c:when>
+            <c:otherwise>
+              <article class="contenido">
+                <ui:insert name="contenido">
+                    <div style="background-color:lightblue; margin-left: 38%; 
+                       margin-right: 38%; 
+                       opacity: 0.8; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 50px;">  
+                    <h:form id="registro">
+                        
+                        <table style="opacity: 1;
+                         text-align: center;
+                         padding-bottom: 20px;
+                         font: 30px Monserrat, sans-serif;
+                         font-size: 30px;
+                        width: 100%;">
+                        
+                          <tr>
+                               <td style="  font: 30px Monserrat, sans-serif">¡Regístrate!</td>
+                          </tr>
+                            
+                        <tr>
+                            <td><h:inputText style="padding: 15px 20px;
+                                    box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;" a:placeholder='Cuenta Bancaria' id ="cuenta_bancaria" value="#{registro.usuario.num_cuenta_bancaria}" required="true" validatorMessage="Compruebe que ha introducido una cuenta bancaria correcta" maxlength="25">
+                                    <f:validateRegex pattern="[A-Z]{2}[0-9]{2}(?:[ ]?[0-9]{4}){4}"/>
+                                    
+                                    </h:inputText>
+                                <p style="font-size: 3; margin-top: -3px; font-size:10px;">Formato:  ESXX XXXX XXXX XXXX XXXX XXXX</p>
+                                    
+                            </td>
+                                    
+                        </tr> 
+                        <tr>    
+                            <td><h:inputText style="padding: 15px 20px;
+                                    box-sizing: border-box; text-align: center; font-size: 100%px; margin:5px;" id ="direccion" a:placeholder='Dirección' value="#{registro.usuario.direccion}" required="true"/></td>
+                        </tr>
+                    
+                            <tr>
+                                <td>   <h:commandButton style="text-decoration: none;
+                                       font: 20px arial, sans-serif;
+                                       margin-top: 10px;
+                                         border-radius: 8px;
+                                         background-color: gray;
+                                         padding: 14px 20px;
+                                        -webkit-transition-duration: 0.4s; /* Safari */
+                                        transition-duration: 0.4s;" value="Quiero apadrinar" action="#{registro.registrarSocio(infoSesion.usuario)}"/>
+                                </td>
+                            </tr>    
+                            
+                           
+                    </table>
+                       
+                    </h:form>
+                    </div>    
+                    <img src="https://image.freepik.com/vector-gratis/ilustracion-ninos-dibujos-animados_29937-1450.jpg" style="z-index: -20;"></img>
+                </ui:insert>
+              </article>   
+                
+            </c:otherwise>
+        </c:choose>
+
+    </h:body>
+    </ui:define>
+</ui:composition>

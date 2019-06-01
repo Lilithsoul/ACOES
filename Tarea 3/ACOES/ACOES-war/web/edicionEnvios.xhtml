@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+    <h:head>
+        <title>
+            <c:choose> 
+                <c:when test="#{envios.autorizadoParaEdicion}">
+                    <h:outputText value=" contacto"/>
+                </c:when>
+                <c:otherwise>
+                    Acceso irregular
+                </c:otherwise>
+            </c:choose>
+        </title>
+    </h:head>
+    <h:body>
+
+        <c:choose> 
+            <c:when test="#{infoSesion.usuario.role == 'ADMINISTRADOR'}">
+                
+                 <div style="background-color:#ebfafa; 
+                     
+                       margin-right: 25%; 
+                       margin-left: 25%;
+                       font: 15px Monserrat, sans-serif;
+                       opacity: 0.9; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 1%;
+                       z-index: 30;
+                       padding-bottom: 1%;
+                       ">
+                    
+                <h:form id="historiales" style="font: 15px Monserrat, sans-serif; width: 100%;">
+                    
+                    <c:if test="#{empty infoSesion.historialesFull}">
+                        
+                        <p><br>&bull;&nbsp; No existen apadrinamientos, no se pueden crear envios en este momento </br></p>
+                        <img src="https://image.freepik.com/vector-gratis/empresario-sintiendo-estres-verguenza-dolor-cabeza_51635-900.jpg"
+                             style="bottom: 0; left:0; width: 50%; z-index: -30; opacity: 0.6"></img>
+                        </c:if>
+
+                    <c:if test="#{!empty infoSesion.historialesFull}">
+                    
+                    <h:dataTable value="#{infoSesion.historialesFull}" var="e"
+                    styleClass="order-table" headerClass="order-table-header"
+                    rowClasses="order-table-odd-row,order-table-even-row">
+                        
+                        <h:column>
+                            <f:facet name="header">ID Niño</f:facet>
+                            <h:outputText value="#{e.niño_apadrinado.id}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            <h:outputText value="#{e.niño_apadrinado.nombre}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Apellidos</f:facet>
+                            <h:outputText value="#{e.niño_apadrinado.apellido1} #{e.niño_apadrinado.apellido2}"/>
+                        </h:column>                       
+                        
+                        <h:column>
+                            <f:facet name="header">¿Apadrinado?</f:facet>
+                            <h:outputText value="#{e.apadrinado}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Nombre padrino</f:facet>
+                            <h:outputText value="#{e.socio_apadrina.nombre}"/>
+                        </h:column>
+                        
+                    </h:dataTable>
+                        
+                        
+                        <h:dataTable value="#{envios.envio}" var="e">   
+                        <h:column>
+                            <f:facet name="header">ID Niño</f:facet>
+                            <h:inputText value="#{envios.ninio}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Descripción</f:facet>
+                            <h:inputText value="#{envios.envio.descripcion}"/>
+                        </h:column>
+                            
+                        <h:column>
+                            <f:facet name="header">Nombre Padrino</f:facet>
+                            <h:inputText value="#{envios.socio}"/>
+                        </h:column>
+                    
+                        <h:column>
+                            <h:commandButton value="Nuevo Envío" action="#{envios.insertarEnvioSocioID()}"/>
+                        </h:column>
+                    </h:dataTable>
+                    
+                    
+                    </c:if>
+                    
+                </h:form>
+                </div>
+                </c:when>
+            <c:otherwise>
+                <p>No está autorizado para ver esta página.</p>
+            </c:otherwise>
+        </c:choose>
+
+    </h:body>
+    </ui:define>
+</ui:composition>
+
+                
