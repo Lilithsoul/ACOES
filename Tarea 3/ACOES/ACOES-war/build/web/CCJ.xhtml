@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">CCJ actuales</ui:define>
+    <ui:define name="content">
+    <h:body style="z-index: 30;">
+        <c:choose>
+            <c:when test="#{empty infoSesion.usuario or infoSesion.usuario.role == 'USUARIO'}">
+                
+                <h2 class="block-title block-title-center" style="text-align: center; font: 50px Monserrat, sans-serif;">¿Que es un CCJ?</h2>
+        
+                    <p style="padding-left: 20%; padding-right: 20%; text-align:justify; font: 20px Monserrat, sans-serif; text-align: center; ">
+                        El Centro de Capacitación Juvenil CCJ, tiene como fin, la integración social de jóvenes de escasos recursos provenientes de 
+                        barrios marginales de Tegucigalpa y de comunidades rurales del interior del país,   a través de una formación integral, garantizando 
+                        su acceso a  la educación oficial, brindándoles  refuerzo escolar,  formación en valores y la participación en el servicio a la comunidad  
+                        mediante el desarrollo de proyectos comunitarios. Promoviendo en ellos, el desarrollo de actitudes y aptitudes de trabajo como el respeto, 
+                        humildad, responsabilidad, puntualidad, honradez, esfuerzo y trabajo. Generando una gran sensibilidad ante la situación de pobreza por la 
+                        que muchas personas pasan.
+                    </p>
+                    <p style="padding-left: 20%; padding-right: 20%; text-align:justify; font: 20px Monserrat, sans-serif; text-align: center; ">
+                        Los jóvenes que se capacitan y colaboran por las mañanas en el centro, por las tardes estudian en diversos institutos y universidades públicas.
+                    </p>
+                    <p style="padding-left: 20%; padding-right: 20%; text-align:justify; font: 20px Monserrat, sans-serif; text-align: center; ">
+                        Los estudiantes reciben una ayuda económica para sus estudios y transporte que se determina por la Junta de Responsables según la implicación 
+                        y colaboración de cada uno de ellos en el proyecto. El gasto está incluido en el proyecto en el que colabora.
+                    </p>
+                    <p style="padding-left: 20%; padding-right: 20%; text-align:justify; font: 20px Monserrat, sans-serif; text-align: center;">
+                        <b>En el Centro de Capacitación Juvenil se gestionan y coordinan los proyectos de ACOES.</b>
+                    </p>
+                <img src="https://image.freepik.com/vector-gratis/pinceladas-tonos-tierra_53876-89316.jpg" 
+                     style="width: 100%; top:0; left: 0; z-index: -30; opacity: 0.5"></img>
+                
+            </c:when>
+            <c:otherwise>
+                
+                <div style="background-color:#ebfafa; 
+                       margin-left: 1%; 
+                       margin-right: 25%; 
+                       margin-left: 25%;
+                       font: 15px Monserrat, sans-serif;
+                       opacity: 0.9; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 1%;
+                       z-index: 30;
+                       padding-bottom: 1%;
+                       ">
+                <h:form id="ccjs" style="font: 15px Monserrat, sans-serif; width: 100%;">
+                    
+                        <c:if test="#{infoSesion.usuario.role == 'SOCIO'}">
+                            
+                            <c:if test="#{ccjs.getCCJNinios(infoSesion.usuario) == null}">
+                        
+                        <p style="width: 100%; text-align: center; "><br> No existen CCJs asociados a tus apadrinados actualmente.</br></p>
+                        
+                            </c:if>
+                            
+                            <c:if test="#{!empty ccjs.getCCJNinios(infoSesion.usuario)}">
+                            
+                            <h:dataTable  value="#{ccjs.getCCJNinios(infoSesion.usuario)}" var="e"
+                    styleClass="order-table" headerClass="order-table-header"
+                    rowClasses="order-table-odd-row,order-table-even-row">
+                        
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{e.id}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            <h:outputText value="#{e.nombre}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Región</f:facet>
+                            <h:outputText value="#{e.region}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Nación</f:facet>
+                            <h:outputText value="#{e.nacion}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Dirección</f:facet>
+                            <h:outputText value="#{e.direccion}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Teléfono</f:facet>
+                            <h:outputText value="#{e.telefono}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Descripción</f:facet>
+                            <h:outputText value="#{e.descripcion}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">e-mail</f:facet>
+                            <h:outputText value="#{e.email}"/>
+                        </h:column>
+                                
+                            </h:dataTable>
+                                
+                            </c:if>
+
+                        </c:if>
+                    
+                    
+                     <c:if test="#{infoSesion.usuario.role == 'ADMINISTRADOR'}">
+                    
+                    <c:if test="#{empty infoSesion.CCJ}">
+                        
+                        <p style="width: 100%; text-align: center; "><br> No existen CCJs actualmente.</br></p>
+                        
+                    </c:if>
+                    
+                    <c:if test="#{!empty infoSesion.CCJ}">
+                    
+                        <h:dataTable  value="#{infoSesion.CCJ}" var="e"
+                    styleClass="order-table" headerClass="order-table-header"
+                    rowClasses="order-table-odd-row,order-table-even-row">
+                        
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{e.id}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            <h:outputText value="#{e.nombre}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Región</f:facet>
+                            <h:outputText value="#{e.region}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Nación</f:facet>
+                            <h:outputText value="#{e.nacion}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Dirección</f:facet>
+                            <h:outputText value="#{e.direccion}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Teléfono</f:facet>
+                            <h:outputText value="#{e.telefono}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Descripción</f:facet>
+                            <h:outputText value="#{e.descripcion}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">e-mail</f:facet>
+                            <h:outputText value="#{e.email}"/>
+                        </h:column>
+
+                        <h:column>
+                            <h:commandButton value="Modificar" style=" background-color: green;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" action="#{ccjs.modificarCCJ(e)}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <h:commandButton value="Eliminar" style=" background-color: #f44336;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;"  action="#{ccjs.eliminarCCJ(e)}"/>
+                        </h:column>
+                            <hr></hr>    
+                    </h:dataTable>
+                        
+                    </c:if>
+                         
+                         <div style="width: 100%;">
+                        <h:commandButton value="Insertar" style=" background-color: green;
+                                                color: white;
+                                                font-size: 20px;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" action="#{ccjs.insertarCCJ()}"/>
+                        <h:commandButton value="Refrescar" style=" background-color: #f44336;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                font-size: 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" action="#{ccjs.refrescar()}"/>
+                         </div>
+                    
+                     </c:if>
+                </h:form>
+                      
+                </div>
+                <img src="https://image.freepik.com/vector-gratis/pasillo-escuela-dibujos-animados-ventana-muchas-puertas_1441-2173.jpg" 
+                         style="top:0;left: 0; width: 100%; z-index: -30;position:absolute"></img> 
+            </c:otherwise>
+        </c:choose>
+
+    </h:body>
+    </ui:define>
+</ui:composition>

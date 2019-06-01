@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">Casas Populorums actuales</ui:define>
+    <ui:define name="content">
+    <h:body>
+        <c:choose>
+            <c:when test="#{empty infoSesion.usuario or infoSesion.usuario.role == 'USUARIO'}">
+                
+                <h2 class="block-title block-title-center" style="text-align: center; font: 50px Monserrat, sans-serif; color: black;">¿Que es un Populorum?</h2>
+                <div>
+                    <p style="padding-left: 20%; padding-right: 20%; text-align:justify; font: 20px Monserrat, sans-serif; text-align: center; color: #6666ff">
+                        Populorum, inicia el año 2000, buscando dar respuesta a la falta de educación en la población joven más desfavorecida de 
+                        comunidades e indígenas, ya que por falta de recursos económicos y difícil acceso a los centros educativos muchos pierden 
+                        la oportunidad de formarse académicamente. Se les facilitan los medios para vivir y formarse integralmente. Su permanencia se 
+                        fundamenta en cuatro pilares, que son: espiritualidad, colaboración, convivencia y estudio, siendo este último por el cual ingresan 
+                        al proyecto. Gracias a los puntos anteriores se fortalecen los jóvenes y se capacitan para enfrentar los retos que la sociedad les presenta 
+                        y se vuelven mejores personas capaces de ayudar a los demás mientras reciben ayuda de otros.
+                    </p>
+                    
+                    <p style="padding-left: 20%; padding-right: 20%; text-align:justify; font: 30px Monserrat, sans-serif; text-align: center; color: #0000cc"> 
+                        Por las mañanas colaboran en los proyectos de ACOES y por las tardes estudian.
+                    </p>
+                    <p style="padding-left: 20%; padding-right: 20%; text-align:justify; font: 20px Monserrat, sans-serif; text-align: center; color: #000066">
+                        Objetivo: Formar jóvenes con una conciencia social crítica, con una personalidad solidaria y humanística que les permita ayudar a 
+                        los más necesitados desempeñando roles de responsabilidad en sus comunidades.
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <img src="https://image.freepik.com/vector-gratis/fondo-pintura-acuarela-rosa-vibrante_53876-58930.jpg" alt="imagen ayuda" style=" left: 0; top: 0; z-index:-30; width:100%;"/>
+                    </p>
+                   
+                    
+                    
+                </div>
+                
+            </c:when>
+            <c:otherwise>
+                
+              <div style="background-color:#ebfafa; 
+                       margin-left: 1%; 
+                       margin-right: 30%; 
+                       margin-left: 30%;
+                       font: 15px Monserrat, sans-serif;
+                       opacity: 0.9; 
+                       outline-style: outset; 
+                       outline-color: lightblue; 
+                       outline-width: 10px; 
+                       margin-top: 1%;
+                       z-index: 30;
+                       padding-bottom: 1%;
+                       ">
+                <h:form id="populorums" style="font: 15px Monserrat, sans-serif; width: 100%;">
+
+                    
+                    <c:if test="#{infoSesion.usuario.role == 'SOCIO'}">
+                            
+                            <c:if test="#{populorums.getPopulorumNinios(infoSesion.usuario) == null}">
+                        
+                        <p style="width: 100%; text-align: center; "><br> No existen Casas Populorums asociados a tus apadrinados actualmente.</br></p>
+                        
+                            </c:if>
+                            
+                            <c:if test="#{!empty populorums.getPopulorumNinios(infoSesion.usuario)}">
+                            
+                            <h:dataTable  value="#{populorums.getPopulorumNinios(infoSesion.usuario)}" var="c"
+                            styleClass="order-table" headerClass="order-table-header"
+                            rowClasses="order-table-odd-row,order-table-even-row">
+                        
+                                <h:column>
+                                    <f:facet name="header">ID</f:facet>
+                                    <h:outputText value="#{c.id}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Nombre</f:facet>
+                                    <h:outputText value="#{c.nombre}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Región</f:facet>
+                                    <h:outputText value="#{c.region}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Tamaño máximo</f:facet>
+                                    <h:outputText value="#{c.tam_max}"/>
+                                </h:column>
+                                
+                            </h:dataTable>
+                                
+                            </c:if>
+
+                        </c:if>
+                    
+
+                    <c:if test="#{infoSesion.usuario.role == 'ADMINISTRADOR'}">
+                    
+                    <c:if test="#{empty infoSesion.populorum}">
+                        
+                          <p style="width: 100%; text-align: center; "><br> No existen Casas Populorums actualmente.</br>
+                          
+                          </p>
+                        
+                    </c:if>
+                    
+                    <c:if test="#{!empty infoSesion.populorum}">
+                    
+                    
+                    <h:dataTable  value="#{infoSesion.populorum}" var="c"
+                    styleClass="order-table" headerClass="order-table-header"
+                    rowClasses="order-table-odd-row,order-table-even-row" style=" border-collapse: separate; border-spacing: 10px;">
+
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{c.id}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            <h:outputText value="#{c.nombre}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Región</f:facet>
+                            <h:outputText value="#{c.region}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Tamaño máximo</f:facet>
+                            <h:outputText value="#{c.tam_max}"/>
+                        </h:column>
+
+                        <h:column>
+                            <h:commandButton value="Modificar" style=" background-color: green;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" action="#{populorums.modificarPopulorum(c)}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <h:commandButton value="Eliminar" style=" background-color: #f44336;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;"  action="#{populorums.eliminarPopulorum(c)}"/>
+                        </h:column>
+
+                    </h:dataTable>
+                        
+                    </c:if>
+
+                    
+                        <h:commandButton value="Insertar" style="background-color: #cccc00;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;
+                                                " action="#{populorums.insertarPopulorum()}"/>
+                        <h:commandButton value="Refrescar" style="background-color: #f44336;
+                                                color: white;
+                                                padding: 10px 20px;
+                                                text-align: center; 
+                                                text-decoration: none;
+                                                display: inline-block;" action="#{populorums.refrescar()}"/>
+
+                     </c:if>
+                </h:form>
+                </div>
+            <img src="http://2.bp.blogspot.com/-T8vOoaiOQE4/ULN2N-L-K9I/AAAAAAAAAv8/As8t1jD-Y6o/s1600/GENTE+pk.jpg" style="z-index: -30; width: 75%; top:0; right: 0"></img>
+            </c:otherwise>
+
+        </c:choose>
+    </h:body>
+    </ui:define>
+</ui:composition>

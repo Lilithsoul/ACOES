@@ -1,0 +1,43 @@
+<h:column>
+                            <f:facet name="header">Nacionalidad</f:facet>
+                            <h:outputText value="#{e.niño_apadrinado.nacionalidad}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">CCJ</f:facet>
+                            <h:outputText value="#{e.niño_apadrinado.ccj.nombre}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Populorum</f:facet>
+                            <h:outputText value="#{e.niño_apadrinado.cp.nombre}"/>
+
+                        </h:column>
+
+                        
+                        <h:column>
+                                    <f:facet name="header">Beca</f:facet>
+                                    <h:dataTable value="#{e.niño_apadrinado.becas}" var="c"
+                                    styleClass="order-table" headerClass="order-table-header"
+                                    rowClasses="order-table-odd-row,order-table-even-row">
+                                        <h:column>
+                                    <f:facet name="header"></f:facet>
+                                    <h:outputText value="#{c.nombre}"/>
+                                </h:column>
+                                    </h:dataTable>
+                                    
+                                </h:column>
+                        
+
+
+
+
+ <h:column>
+                            <f:facet name="header">Fecha Inicio</f:facet>
+                            <h:outputText value="#{e.fecha_inicio}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Fecha Fin</f:facet>
+                            <h:outputText value="#{e.fecha_fin}"/>
+                        </h:column> 
