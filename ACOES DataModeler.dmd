@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="ACOES DataModeler" id="BAEF4D31-E5B4-8A15-2631-382610EAF8F5" version="3.5">
-<createdBy>rocio</createdBy>
-<createdTime>2019-04-04 13:45:54 UTC</createdTime>
-<ownerDesignName>ACOES DataModeler</ownerDesignName>
-<capitalNames>false</capitalNames>
-<designId>BAEF4D31-E5B4-8A15-2631-382610EAF8F5</designId>
-</OSDM_Design>
